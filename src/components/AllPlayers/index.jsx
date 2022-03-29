@@ -11,7 +11,7 @@ export default function AllPlayers({ player }){
         <AllPlayersBr>
             {
                 player.map((player) => (
-                    <Link to={`/jogadores/${player.nome}`} key={player.id}>
+                    <Link to={`/jogadores/${player.id}`} key={player.id}>
                         <Player
                             nome={player.nome}
                             clube={player.clube}

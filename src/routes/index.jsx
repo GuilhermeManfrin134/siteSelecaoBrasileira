@@ -10,7 +10,7 @@ export default function Routex(){
     return(
         <Routes>
             <Route exact path='/' element={<Home/>}/>
-            <Route exact path='/jogadores/:name' element={<Jogador/>}/>
+            <Route exact path='/jogadores/:id' element={<Jogador/>}/>
             <Route path='*' element={<Erro/>}/>
         </Routes>
     )

@@ -20,7 +20,7 @@ import foto from '../../assets/avatar.png';
 
 export default function Jogador(){
 
-    const { name } = useParams();
+    const { id } = useParams();
     const [jogador, setJogador] = useState([]);
 
     useEffect(()=>{
@@ -34,7 +34,7 @@ export default function Jogador(){
 
     }, []);
 
-    const jogadorFiltrado = jogador.filter(item => item.nome === `${name}`);
+    const jogadorFiltrado = jogador.filter(item => item.id === `${id}`);
 
     if(jogadorFiltrado.length === 0){
         return(

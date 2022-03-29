@@ -13,6 +13,11 @@ export const JogadorBrUp = styled.div`
     display: flex;
     justify-content: space-between;
 
+    @media screen and (min-width: 1000px){
+        display: flex;
+        justify-content: space-around;
+    }
+
     @media screen and (max-width: 630px){
         flex-direction: column;
     }
@@ -41,6 +46,10 @@ export const JogadorBrDesc = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 70%;
+
+    @media screen and (min-width: 1000px){
+        width: 40%;
+    }
 
     @media screen and (max-width: 900px){
         align-items: center;
@@ -95,7 +104,7 @@ export const JogadorBrDown = styled.div`
 `;
 
 export const JogadorBrCarreira = styled.div`
-    width: 100%;
+    width: 60%;
     display: flex;
     flex-direction: column;
 
@@ -111,7 +120,7 @@ export const JogadorBrCarreira = styled.div`
 `;
 
 export const JogadorBrCarreiraDados = styled.div`
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 
