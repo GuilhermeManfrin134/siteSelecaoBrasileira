@@ -8,6 +8,7 @@ export const HeaderBr = styled.header`
     align-items: center;
     justify-content: space-around;
     margin-bottom: 15px;
+    box-sizing: border-box;
 `;
 
 export const HeaderDivision = styled.div`
@@ -33,9 +34,7 @@ export const HeaderIcon = styled.div`
         height: 100%;
     }
 
-    @media screen and (max-width: 460px){
-        font-size: 15px;
-
+    @media screen and (max-width: 750px){
         img{
             width: 100%;
             height: auto;
