@@ -1,0 +1,27 @@
+:root{
+  --yellowColor: #ffdf00;
+  --greenColor: #009c3b;
+  --blueColor: #002776;
+  --whiteColor: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', 'Oxygen',
+    'Ubuntu', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--whiteColor);
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
