@@ -5,4 +5,8 @@ export const AllPlayersBr = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    a{
+        color: #000;
+    }
 `;
