@@ -5,6 +5,7 @@ import api from '../../services/api';
 
 //Importação de Componentes
 import AllPlayers from '../../components/AllPlayers';
+import Loading from '../../components/Loading';
 
 //Importação de Componentes de Estilização
 import { SectionBr, ButtonBr, TitleBr, MainBr } from './styles';
@@ -12,6 +13,7 @@ import { SectionBr, ButtonBr, TitleBr, MainBr } from './styles';
 export default function Home(){
     
     const [player, setPlayer] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
 
@@ -19,6 +21,7 @@ export default function Home(){
             const response = await api.get('');
 
             setPlayer(response.data);
+            setLoading(false)
         }
         loadPlayer();
 
@@ -33,7 +36,9 @@ export default function Home(){
                 OPÇÕES DE ESCOLHA:
             </TitleBr>
             <MainBr>
-                <AllPlayers player={player}/>
+                {
+                    loading ? <Loading/> : <AllPlayers player={player}/> 
+                }
             </MainBr>
             <ButtonBr onClick={() => {}}>
                 Comece sua convocação
