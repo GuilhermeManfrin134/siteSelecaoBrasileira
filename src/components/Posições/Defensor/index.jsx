@@ -1,21 +1,37 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 //Importação de Contexts
 import { UserContext } from "../../../contexts/user";
 
-export default function Goleiro(){
+export default function Zagueiro(){
 
-    const { player, goleirosConvocados, setGoleirosConvocados } = useContext(UserContext);
+    const { player, defensoresConvocados, setDefensoresConvocados  } = useContext(UserContext);
 
-    const goleiro = player.filter(filtro => filtro.posicao[0] === "GOL");
+    const [textDef, setTextDef] = useState('');
+
+    const defensor = player.filter(
+        filtro => 
+        filtro.posicao[0] === `${textDef}` || 
+        filtro.posicao[1] === `${textDef}` ||
+        filtro.posicao[2] === `${textDef}` ||
+        filtro.posicao[3] === `${textDef}` ||
+        filtro.posicao[4] === `${textDef}` ||
+        filtro.posicao[5] === `${textDef}` ||
+        filtro.posicao[6] === `${textDef}`
+    );
+
+    function filtrar(){
+        let textDefensor = document.querySelector('input[name=defensor]:checked').value;
+        setTextDef(textDefensor);
+    }
 
     function verificar(e){
 
-        let gol = document.getElementsByName('goleiro');
+        let def = document.getElementsByName('defensor');
 
-        for(let i = 0; i <= gol.length; i++){
-            if(gol[i].checked){
-                const g = goleiro.filter(g => g.nome === `${gol[i].value}`);
+        for(let i = 0; i <= def.length; i++){
+            if(def[i].checked){
+                const g = defensor.filter(g => g.nome === `${def[i].value}`);
                 const id = g.map(item => item.id);
                 const nome = g.map(item => item.nome);
                 const nome_completo = g.map(item => item.nome_completo);
@@ -30,8 +46,8 @@ export default function Goleiro(){
                 const clube = g.map(item => item.clube);
                 const campeonato = g.map(item => item.campeonato);
                 const posicao = g.map(item => item.posicao);
-                const g1 = [
-                    ...goleirosConvocados.slice(1),
+                const d1 = [
+                    ...defensoresConvocados.slice(1),
                     {
                         id: id,
                         nome: nome,
@@ -49,7 +65,7 @@ export default function Goleiro(){
                         posicao: posicao
                     },
                 ];
-                setGoleirosConvocados(g1);
+                setDefensoresConvocados(d1);
             }
         }
 
@@ -58,12 +74,18 @@ export default function Goleiro(){
     return(
         <div>
             <div>
+                <input type="radio" value="LTD" name="defensor" onChange={filtrar}/> Lateral Direito
+                <input type="radio" value="LTE" name="defensor" onChange={filtrar}/> Lateral Esquerdo
+                <input type="radio" value="ZAG" name="defensor" onChange={filtrar}/> Zagueiro
+            </div>
+            <div>
+                Escolha o Defensor
                 {
-                    goleiro.map(gol => (
+                    defensor.map(gol => (
                         <div key={gol.id}>
                             <input type='radio'
                                 value={gol.nome}
-                                name='goleiro' 
+                                name='defensor' 
                                 onChange={verificar}
                             /> {gol.nome}
                         </div>
