@@ -190,6 +190,120 @@ function UserProvider({children}){
             "posicao": "..."
         },
     ])
+    const [meiasConvocados, setMeiasConvocados] = useState([
+        {
+            "id": "666",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "6666",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "777",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "7777",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "888",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "8888",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "999",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+    ])
 
     useEffect(() => {
 
@@ -207,7 +321,8 @@ function UserProvider({children}){
         <UserContext.Provider value={{ 
                                         player, setPlayer, loading, 
                                         goleirosConvocados, setGoleirosConvocados,
-                                        defensoresConvocados, setDefensoresConvocados
+                                        defensoresConvocados, setDefensoresConvocados,
+                                        meiasConvocados, setMeiasConvocados
                                     }}>
             {children}
         </UserContext.Provider>
