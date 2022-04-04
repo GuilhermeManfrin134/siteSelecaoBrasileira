@@ -1,7 +1,4 @@
-import { useState, useEffect } from 'react';
-
-//Importando APIs
-import api from '../../services/api';
+import { useContext } from 'react';
 
 //Importação de Componentes
 import AllPlayers from '../../components/AllPlayers';
@@ -10,22 +7,12 @@ import Loading from '../../components/Loading';
 //Importação de Componentes de Estilização
 import { SectionBr, ButtonBr, TitleBr, MainBr } from './styles';
 
+//Imprtando Contexts
+import { UserContext } from '../../contexts/user';
+
 export default function Home(){
     
-    const [player, setPlayer] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-
-        async function loadPlayer(){
-            const response = await api.get('');
-
-            setPlayer(response.data);
-            setLoading(false)
-        }
-        loadPlayer();
-
-    }, []);
+    const { loading} = useContext(UserContext);
 
     return(
         <SectionBr>
@@ -37,7 +24,7 @@ export default function Home(){
             </TitleBr>
             <MainBr>
                 {
-                    loading ? <Loading/> : <AllPlayers player={player}/> 
+                    loading ? <Loading/> : <AllPlayers/> 
                 }
             </MainBr>
             <ButtonBr onClick={() => {}}>

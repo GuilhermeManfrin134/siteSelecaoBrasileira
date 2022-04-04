@@ -109,6 +109,7 @@ export const JogadorBrCarreira = styled.div`
     flex-direction: column;
 
     @media screen and (max-width: 630px){
+        width: 100%;
         align-items: flex-start;
         margin-top: 5px;
     }

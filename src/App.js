@@ -6,11 +6,16 @@ import Routes from './routes';
 //Importação de Componentes
 import Header from './components/Header';
 
+//Importando Context
+import UserProvider from './contexts/user';
+
 export default function App() {
   return (
-    <BrowserRouter>
-        <Header/>
-        <Routes/>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+          <Header/>
+          <Routes/>
+      </BrowserRouter>
+    </UserProvider>
   );
 }

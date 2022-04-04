@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react"
+import { useContext } from "react"
 import { useParams } from "react-router-dom";
-
-//Importando APIs
-import api from "../../services/api";
 
 //Importando Páginas
 import Erro from "../Erro";
@@ -18,23 +15,15 @@ import {
 //Importando Foto Padrão
 import foto from '../../assets/avatar.png';
 
+//Importando Contexts
+import { UserContext } from "../../contexts/user";
+
 export default function Jogador(){
 
     const { id } = useParams();
-    const [jogador, setJogador] = useState([]);
+    const { player } = useContext(UserContext);
 
-    useEffect(()=>{
-
-        async function loadJogador(){
-            const response = await api.get('');
-
-            setJogador(response.data)
-        }
-        loadJogador();
-
-    }, []);
-
-    const jogadorFiltrado = jogador.filter(item => item.id === `${id}`);
+    const jogadorFiltrado = player.filter(item => item.id === `${id}`);
 
     if(jogadorFiltrado.length === 0){
         return(
@@ -45,7 +34,7 @@ export default function Jogador(){
     return(
         <JogadorBr>
             {
-                jogadorFiltrado.map((jogador, index) => (
+                jogadorFiltrado.map(jogador => (
                     <div key={jogador.id}>
                         <JogadorBrUp>
                             <JogadorImg>
