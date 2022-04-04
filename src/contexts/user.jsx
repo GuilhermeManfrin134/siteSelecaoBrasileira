@@ -304,6 +304,136 @@ function UserProvider({children}){
             "posicao": "..."
         },
     ])
+    const [atacantesConvocados, setAtacantesConvocados] = useState([
+        {
+            "id": "1010",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "101010",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "1111",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "111",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "10101",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "001010",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "1010101010",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+        {
+            "id": "11101011",
+            "nome": "...",
+            "nome_completo": "...",
+            "foto": "...",
+            "altura": "...",
+            "idade": "...",
+            "dt_nasc": "...",
+            "qtd_jogos": "...",
+            "gols_selecao": "...",
+            "assists_selecao": "...",
+            "pe": "...",
+            "clube": "...",
+            "campeonato": "...",
+            "posicao": "..."
+        },
+    ])
 
     useEffect(() => {
 
@@ -322,7 +452,8 @@ function UserProvider({children}){
                                         player, setPlayer, loading, 
                                         goleirosConvocados, setGoleirosConvocados,
                                         defensoresConvocados, setDefensoresConvocados,
-                                        meiasConvocados, setMeiasConvocados
+                                        meiasConvocados, setMeiasConvocados,
+                                        atacantesConvocados, setAtacantesConvocados
                                     }}>
             {children}
         </UserContext.Provider>
