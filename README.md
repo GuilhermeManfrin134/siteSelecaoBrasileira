@@ -4,6 +4,7 @@
 
 Projeto criado para que seja possível que o usuário selecione os jogadores que ele convocaria caso fosse o técnico da seleção brasileira de Futebol. 
 <br>
+<br>
 ⚠️ Até o momento, só é possível visualizar a lista completa de jogadores disponíveis e ver suas informações clicando em seus "cards". ⚠️
 
 Desenvolvido com a utilização de HTML, CSS, JavaScript, NodeJs e ReactJS.
