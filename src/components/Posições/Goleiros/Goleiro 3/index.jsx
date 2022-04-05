@@ -1,11 +1,11 @@
 import { useContext } from "react";
 
 //Importação de Contexts
-import { UserContext } from "../../../contexts/user";
+import { UserContext } from "../../../../contexts/user";
 
-export default function Goleiro(){
+export default function Goleiro3(){
 
-    const { player, goleirosConvocados, setGoleirosConvocados } = useContext(UserContext);
+    const { goleiro3, setGoleiro3, player } = useContext(UserContext);
 
     const goleiro = player.filter(filtro => filtro.posicao[0] === "GOL");
 
@@ -30,8 +30,8 @@ export default function Goleiro(){
                 const clube = g.map(item => item.clube);
                 const campeonato = g.map(item => item.campeonato);
                 const posicao = g.map(item => item.posicao);
-                const g1 = [
-                    ...goleirosConvocados.slice(1),
+                const g3 = [
+                    ...goleiro3.slice(1),
                     {
                         id: id,
                         nome: nome,
@@ -49,7 +49,7 @@ export default function Goleiro(){
                         posicao: posicao
                     },
                 ];
-                setGoleirosConvocados(g1);
+                setGoleiro3(g3);
             }
         }
 

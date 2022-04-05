@@ -1,37 +1,37 @@
 import { useContext, useState } from "react";
 
 //Importação de Contexts
-import { UserContext } from "../../../contexts/user";
+import { UserContext } from "../../../../contexts/user";
 
-export default function Zagueiro(){
+export default function Atacante5(){
 
-    const { player, defensoresConvocados, setDefensoresConvocados  } = useContext(UserContext);
+    const { player, atacante5, setAtacante5 } = useContext(UserContext);
 
-    const [textDef, setTextDef] = useState('');
+    const [textAta, setTextAta] = useState('');
 
-    const defensor = player.filter(
+    const atacante = player.filter(
         filtro => 
-        filtro.posicao[0] === `${textDef}` || 
-        filtro.posicao[1] === `${textDef}` ||
-        filtro.posicao[2] === `${textDef}` ||
-        filtro.posicao[3] === `${textDef}` ||
-        filtro.posicao[4] === `${textDef}` ||
-        filtro.posicao[5] === `${textDef}` ||
-        filtro.posicao[6] === `${textDef}`
+        filtro.posicao[0] === `${textAta}` || 
+        filtro.posicao[1] === `${textAta}` ||
+        filtro.posicao[2] === `${textAta}` ||
+        filtro.posicao[3] === `${textAta}` ||
+        filtro.posicao[4] === `${textAta}` ||
+        filtro.posicao[5] === `${textAta}` ||
+        filtro.posicao[6] === `${textAta}`
     );
 
     function filtrar(){
-        let textDefensor = document.querySelector('input[name=defensor]:checked').value;
-        setTextDef(textDefensor);
+        let textAta = document.querySelector('input[name=atacante]:checked').value;
+        setTextAta(textAta);
     }
 
     function verificar(e){
 
-        let def = document.getElementsByName('defensor');
+        let ata = document.getElementsByName('atacante');
 
-        for(let i = 0; i <= def.length; i++){
-            if(def[i].checked){
-                const g = defensor.filter(g => g.nome === `${def[i].value}`);
+        for(let i = 0; i <= ata.length; i++){
+            if(ata[i].checked){
+                const g = atacante.filter(g => g.nome === `${ata[i].value}`);
                 const id = g.map(item => item.id);
                 const nome = g.map(item => item.nome);
                 const nome_completo = g.map(item => item.nome_completo);
@@ -46,8 +46,8 @@ export default function Zagueiro(){
                 const clube = g.map(item => item.clube);
                 const campeonato = g.map(item => item.campeonato);
                 const posicao = g.map(item => item.posicao);
-                const d1 = [
-                    ...defensoresConvocados.slice(1),
+                const a5 = [
+                    ...atacante5.slice(1),
                     {
                         id: id,
                         nome: nome,
@@ -65,7 +65,7 @@ export default function Zagueiro(){
                         posicao: posicao
                     },
                 ];
-                setDefensoresConvocados(d1);
+                setAtacante5(a5);
             }
         }
 
@@ -74,18 +74,19 @@ export default function Zagueiro(){
     return(
         <div>
             <div>
-                <input type="radio" value="LTD" name="defensor" onChange={filtrar}/> Lateral Direito
-                <input type="radio" value="LTE" name="defensor" onChange={filtrar}/> Lateral Esquerdo
-                <input type="radio" value="ZAG" name="defensor" onChange={filtrar}/> Zagueiro
+                <input type="radio" value="ATA" name="atacante" onChange={filtrar}/> Atacante
+                <input type="radio" value="PTE" name="atacante" onChange={filtrar}/> Ponta Esquerda
+                <input type="radio" value="PTD" name="atacante" onChange={filtrar}/> Ponta Direita
+                <input type="radio" value="SA" name="atacante" onChange={filtrar}/> Meia Atacante
             </div>
             <div>
-                Escolha o Defensor
+                Escolha o Atacante
                 {
-                    defensor.map(gol => (
+                    atacante.map(gol => (
                         <div key={gol.id}>
                             <input type='radio'
                                 value={gol.nome}
-                                name='defensor' 
+                                name='atacante' 
                                 onChange={verificar}
                             /> {gol.nome}
                         </div>

@@ -1,37 +1,37 @@
 import { useContext, useState } from "react";
 
 //Importação de Contexts
-import { UserContext } from "../../../contexts/user";
+import { UserContext } from "../../../../contexts/user";
 
-export default function Meia(){
+export default function Atacante3(){
 
-    const { player, meiasConvocados, setMeiasConvocados } = useContext(UserContext);
+    const { player, atacante3, setAtacante3 } = useContext(UserContext);
 
-    const [textMeia, setTextMeia] = useState('');
+    const [textAta, setTextAta] = useState('');
 
-    const meia = player.filter(
+    const atacante = player.filter(
         filtro => 
-        filtro.posicao[0] === `${textMeia}` || 
-        filtro.posicao[1] === `${textMeia}` ||
-        filtro.posicao[2] === `${textMeia}` ||
-        filtro.posicao[3] === `${textMeia}` ||
-        filtro.posicao[4] === `${textMeia}` ||
-        filtro.posicao[5] === `${textMeia}` ||
-        filtro.posicao[6] === `${textMeia}`
+        filtro.posicao[0] === `${textAta}` || 
+        filtro.posicao[1] === `${textAta}` ||
+        filtro.posicao[2] === `${textAta}` ||
+        filtro.posicao[3] === `${textAta}` ||
+        filtro.posicao[4] === `${textAta}` ||
+        filtro.posicao[5] === `${textAta}` ||
+        filtro.posicao[6] === `${textAta}`
     );
 
     function filtrar(){
-        let textMeia = document.querySelector('input[name=meia]:checked').value;
-        setTextMeia(textMeia);
+        let textAta = document.querySelector('input[name=atacante]:checked').value;
+        setTextAta(textAta);
     }
 
     function verificar(e){
 
-        let mei = document.getElementsByName('meia');
+        let ata = document.getElementsByName('atacante');
 
-        for(let i = 0; i <= mei.length; i++){
-            if(mei[i].checked){
-                const g = meia.filter(g => g.nome === `${mei[i].value}`);
+        for(let i = 0; i <= ata.length; i++){
+            if(ata[i].checked){
+                const g = atacante.filter(g => g.nome === `${ata[i].value}`);
                 const id = g.map(item => item.id);
                 const nome = g.map(item => item.nome);
                 const nome_completo = g.map(item => item.nome_completo);
@@ -46,8 +46,8 @@ export default function Meia(){
                 const clube = g.map(item => item.clube);
                 const campeonato = g.map(item => item.campeonato);
                 const posicao = g.map(item => item.posicao);
-                const m1 = [
-                    ...meiasConvocados.slice(1),
+                const a3 = [
+                    ...atacante3.slice(1),
                     {
                         id: id,
                         nome: nome,
@@ -65,7 +65,7 @@ export default function Meia(){
                         posicao: posicao
                     },
                 ];
-                setMeiasConvocados(m1);
+                setAtacante3(a3);
             }
         }
 
@@ -74,18 +74,19 @@ export default function Meia(){
     return(
         <div>
             <div>
-                <input type="radio" value="VOL" name="meia" onChange={filtrar}/> Volante
-                <input type="radio" value="MC" name="meia" onChange={filtrar}/> Meio Campo
-                <input type="radio" value="MEI" name="meia" onChange={filtrar}/> Meia Atacante
+                <input type="radio" value="ATA" name="atacante" onChange={filtrar}/> Atacante
+                <input type="radio" value="PTE" name="atacante" onChange={filtrar}/> Ponta Esquerda
+                <input type="radio" value="PTD" name="atacante" onChange={filtrar}/> Ponta Direita
+                <input type="radio" value="SA" name="atacante" onChange={filtrar}/> Meia Atacante
             </div>
             <div>
-                Escolha o Meia
+                Escolha o Atacante
                 {
-                    meia.map(gol => (
+                    atacante.map(gol => (
                         <div key={gol.id}>
                             <input type='radio'
                                 value={gol.nome}
-                                name='meia' 
+                                name='atacante' 
                                 onChange={verificar}
                             /> {gol.nome}
                         </div>

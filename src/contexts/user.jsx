@@ -10,430 +10,111 @@ function UserProvider({children}){
     const [player, setPlayer] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const [goleirosConvocados, setGoleirosConvocados] = useState([
-        {
-            "id": "999",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "9999",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "999999",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-    ]);
-    const [defensoresConvocados, setDefensoresConvocados] = useState([
-        {
-            "id": "222",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "2222",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "333",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "3333",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "444",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "4444",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "555",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "5555",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-    ])
-    const [meiasConvocados, setMeiasConvocados] = useState([
-        {
-            "id": "666",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "6666",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "777",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "7777",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "888",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "8888",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "999",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-    ])
-    const [atacantesConvocados, setAtacantesConvocados] = useState([
-        {
-            "id": "1010",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "101010",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "1111",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "111",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "10101",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "001010",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "1010101010",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-        {
-            "id": "11101011",
-            "nome": "...",
-            "nome_completo": "...",
-            "foto": "...",
-            "altura": "...",
-            "idade": "...",
-            "dt_nasc": "...",
-            "qtd_jogos": "...",
-            "gols_selecao": "...",
-            "assists_selecao": "...",
-            "pe": "...",
-            "clube": "...",
-            "campeonato": "...",
-            "posicao": "..."
-        },
-    ])
+    //GOLEIROS
+    const [goleiro1, setGoleiro1] = useState([]);
+    const [goleiro2, setGoleiro2] = useState([]);
+    const [goleiro3, setGoleiro3] = useState([]);
+    const [goleirosConvocados, setGoleirosConvocados] = useState([]);
+
+    //DEFENSORES
+    const [defensor1, setDefensor1] = useState([]);
+    const [defensor2, setDefensor2] = useState([]);
+    const [defensor3, setDefensor3] = useState([]);
+    const [defensor4, setDefensor4] = useState([]);
+    const [defensor5, setDefensor5] = useState([]);
+    const [defensor6, setDefensor6] = useState([]);
+    const [defensor7, setDefensor7] = useState([]);
+    const [defensor8, setDefensor8] = useState([]);
+    const [defensoresConvocados, setDefensoresConvocados] = useState([]);
+
+    //MEIAS
+    const [meia1, setMeia1] = useState([]);
+    const [meia2, setMeia2] = useState([]);
+    const [meia3, setMeia3] = useState([]);
+    const [meia4, setMeia4] = useState([]);
+    const [meia5, setMeia5] = useState([]);
+    const [meia6, setMeia6] = useState([]);
+    const [meia7, setMeia7] = useState([]);
+    const [meiasConvocados, setMeiasConvocados] = useState([]);
+
+    //ATACANTES
+    const [atacante1, setAtacante1] = useState([]);
+    const [atacante2, setAtacante2] = useState([]);
+    const [atacante3, setAtacante3] = useState([]);
+    const [atacante4, setAtacante4] = useState([]);
+    const [atacante5, setAtacante5] = useState([]);
+    const [atacante6, setAtacante6] = useState([]);
+    const [atacante7, setAtacante7] = useState([]);
+    const [atacante8, setAtacante8] = useState([]);
+    const [atacantesConvocados, setAtacantesConvocados] = useState([]);
+
+    //TODOS OS JOGADORES CONVOCADOS
+    const [convocados, setConvocados] = useState([]);
+
+    useEffect(()=> {
+
+        setConvocados([
+            ...goleirosConvocados,
+            ...defensoresConvocados,
+            ...meiasConvocados,
+            ...atacantesConvocados
+        ]);
+
+    }, [atacantesConvocados, defensoresConvocados, meiasConvocados, goleirosConvocados]);
+
+    useEffect(()=>{
+
+        setGoleirosConvocados([
+            ...goleiro1,
+            ...goleiro2,
+            ...goleiro3
+        ]);
+
+    },[goleiro1, setGoleirosConvocados, goleiro2, goleiro3]);
+
+    useEffect(()=>{
+
+        setDefensoresConvocados([
+            ...defensor1,
+            ...defensor2,
+            ...defensor3,
+            ...defensor4,
+            ...defensor5,
+            ...defensor6,
+            ...defensor7,
+            ...defensor8
+        ]);
+
+    },[defensor1, defensor2, defensor3, defensor4, defensor5, defensor6, defensor7, defensor8, setDefensoresConvocados]);
+
+    useEffect(()=>{
+
+        setMeiasConvocados([
+            ...meia1,
+            ...meia2,
+            ...meia3,
+            ...meia4,
+            ...meia5,
+            ...meia6,
+            ...meia7
+        ]);
+
+    },[meia1, meia2, meia3, meia4, meia5, meia6, meia7, setMeiasConvocados]);
+
+    useEffect(()=>{
+
+        setAtacantesConvocados([
+            ...atacante1,
+            ...atacante2,
+            ...atacante3,
+            ...atacante4,
+            ...atacante5,
+            ...atacante6,
+            ...atacante7,
+            ...atacante8
+        ]);
+
+    },[atacante1, atacante2, atacante3, atacante4, atacante5, atacante6, atacante7, atacante8, setAtacantesConvocados]);
 
     useEffect(() => {
 
@@ -453,7 +134,20 @@ function UserProvider({children}){
                                         goleirosConvocados, setGoleirosConvocados,
                                         defensoresConvocados, setDefensoresConvocados,
                                         meiasConvocados, setMeiasConvocados,
-                                        atacantesConvocados, setAtacantesConvocados
+                                        atacantesConvocados, setAtacantesConvocados,
+                                        goleiro1, setGoleiro1, goleiro2, setGoleiro2,
+                                        goleiro3, setGoleiro3, convocados,
+                                        defensor1, setDefensor1, defensor2, setDefensor2,
+                                        defensor3, setDefensor3, defensor4, setDefensor4,
+                                        defensor5, setDefensor5, defensor6, setDefensor6,
+                                        defensor7, setDefensor7, defensor8, setDefensor8,
+                                        meia1, setMeia1, meia2, setMeia2, meia3, setMeia3,
+                                        meia4, setMeia4, meia5, setMeia5, meia6, setMeia6,
+                                        meia7, setMeia7, 
+                                        atacante1, setAtacante1, atacante2, setAtacante2,
+                                        atacante3, setAtacante3, atacante4, setAtacante4,
+                                        atacante5, setAtacante5, atacante6, setAtacante6,
+                                        atacante7, setAtacante7, atacante8, setAtacante8
                                     }}>
             {children}
         </UserContext.Provider>

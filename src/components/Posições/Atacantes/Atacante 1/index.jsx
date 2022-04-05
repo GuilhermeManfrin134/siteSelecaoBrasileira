@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 
 //Importação de Contexts
-import { UserContext } from "../../../contexts/user";
+import { UserContext } from "../../../../contexts/user";
 
-export default function Atacante(){
+export default function Atacante1(){
 
-    const { player, atacantesConvocados, setAtacantesConvocados } = useContext(UserContext);
+    const { player, atacante1, setAtacante1 } = useContext(UserContext);
 
     const [textAta, setTextAta] = useState('');
 
@@ -47,7 +47,7 @@ export default function Atacante(){
                 const campeonato = g.map(item => item.campeonato);
                 const posicao = g.map(item => item.posicao);
                 const a1 = [
-                    ...atacantesConvocados.slice(1),
+                    ...atacante1.slice(1),
                     {
                         id: id,
                         nome: nome,
@@ -65,7 +65,7 @@ export default function Atacante(){
                         posicao: posicao
                     },
                 ];
-                setAtacantesConvocados(a1);
+                setAtacante1(a1);
             }
         }
 
