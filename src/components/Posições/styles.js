@@ -53,9 +53,23 @@ export const PlayersPosition = styled.div`
 `;
 
 export const PlayerPositionTitle = styled.div`
+    display: flex;
+    justify-content: space-between;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
+
+    a{
+        box-sizing: border-box;
+        width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--greenColor);
+        font-size: 15px;
+        font-weight: 800;
+    }
+
     @media screen and (max-width: 400px){
         font-size: 12px;
         font-weight: 800;

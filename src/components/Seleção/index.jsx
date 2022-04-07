@@ -12,6 +12,7 @@ import { PlayersArea, PlayerPositionTitle,
 
 //Importando Icons
 import { ImInfo } from 'react-icons/im';
+import { FaEdit } from 'react-icons/fa';
 
 //Importação de Componentes
 import ModalJogadores from "../../components/ModalJogadores";
@@ -38,6 +39,10 @@ export default function Seleção(){
             <PlayersPosition>
                 <PlayerPositionTitle>
                     Goleiros
+                    <Link to='/convocacao_goleiros'>
+                        Edit
+                        <FaEdit size={25} color={`var(--greenColor)`}/>
+                    </Link>
                 </PlayerPositionTitle>
                 {
                     goleirosConvocados.map(gol => (
@@ -73,6 +78,10 @@ export default function Seleção(){
             <PlayersPosition>
                 <PlayerPositionTitle>
                     Defensores
+                    <Link to='/convocacao_defensores'>
+                        Edit
+                        <FaEdit size={25} color={`var(--greenColor)`}/>
+                    </Link>
                 </PlayerPositionTitle>
                 {
                     defensoresConvocados.map(gol => (
@@ -108,6 +117,10 @@ export default function Seleção(){
             <PlayersPosition>
                 <PlayerPositionTitle>
                     Meios de Campo
+                    <Link to='/convocacao_meias'>
+                        Edit
+                        <FaEdit size={25} color={`var(--greenColor)`}/>
+                    </Link>
                 </PlayerPositionTitle>
                 {
                     meiasConvocados.map(gol => (
@@ -143,6 +156,10 @@ export default function Seleção(){
             <PlayersPosition>
                 <PlayerPositionTitle>
                     Atacantes
+                    <Link to='/convocacao_atacantes'>
+                        Edit
+                        <FaEdit size={25} color={`var(--greenColor)`}/>
+                    </Link>
                 </PlayerPositionTitle>
                 {
                     atacantesConvocados.map(gol => (
