@@ -19,7 +19,7 @@ export default function Goleiro(){
     let navigate = useNavigate();
 
     function next(){
-        return navigate('/')
+        return navigate('/selecao');
     }
 
     return(
