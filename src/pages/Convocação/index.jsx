@@ -1,33 +1,35 @@
-import { useContext } from "react";
+//Importação de Componentes de Estilização
+import { DescriptionSite, Psite, ButtonInit } from './styles';
 
-//Importação de Contexts
-import { UserContext } from "../../contexts/user";
-
-//Testes
-import Goleiro1 from "../../components/Posições/Goleiros/Goleiro 1";
-import Goleiro2 from "../../components/Posições/Goleiros/Goleiro 2";
-import Goleiro3 from "../../components/Posições/Goleiros/Goleiro 3";
+//Importando Icones
+import { MdOutlineSportsSoccer } from 'react-icons/md';
 
 export default function Convocação(){
 
-    const { convocados } = useContext(UserContext);
-
     return(
-        <>
-            <div>
-                <Goleiro1/>
-                <Goleiro2/>
-                <Goleiro3/>
-                <br/>
-                
-                {
-                    convocados.map((item, index) => (
-                        <div key={index}>
-                            {item.nome} - {item.clube} - {item.idade} anos 
-                        </div>
-                    ))
-                }
+        <DescriptionSite>
+            <strong>Entenda como funciona</strong>
+            <Psite>
+                Ao iniciar a convocação, serão colocados em sequência as opções de escolha de:
+            </Psite>
+            <Psite>
+                <li><MdOutlineSportsSoccer /> 3 Goleiros;</li>
+                <li><MdOutlineSportsSoccer /> 8 Defensores;</li>
+                <li><MdOutlineSportsSoccer /> 7 Meios de Campo;</li>
+                <li><MdOutlineSportsSoccer /> 8 Atacantes.</li>
+            </Psite>
+            <Psite>
+                Totalizando 26 jogadores.
+            </Psite>
+            <strong>Lembrete:</strong>
+            <Psite>
+                Existem jogadores que exercem mais de uma função, então, é possível levar, por exemplo, o jogador Lucas Paquetá, tanto em posição de meio de campo, quanto em posição de ataque, caso ache a quantidade de vagas de uma das posições insuficiente.
+            </Psite>
+            <div className="alignRight">
+                <ButtonInit onClick={() => {}}>
+                    Iniciar
+                </ButtonInit>
             </div>
-        </>
+        </DescriptionSite>
     )
 }

@@ -19,7 +19,7 @@ export const ButtonBr = styled.button`
     font-size: 25px;
     font-weight: 1000;
     cursor: pointer;
-
+    
     @media screen and (max-width: 520px){
         width: 80%;
     }
