@@ -7,6 +7,8 @@ import Jogador from '../pages/Jogador';
 import Convocação from '../pages/Convocação';
 import Goleiro from '../components/Goleiro';
 import Defensor from '../components/Defensor';
+import Meia from '../components/Meia';
+import Atacante from '../components/Atacante';
 
 export default function Routex(){
 
@@ -17,6 +19,8 @@ export default function Routex(){
             <Route exact path='/convocacao_selecao' element={<Convocação/>}/>
             <Route exact path='/convocacao_goleiros' element={<Goleiro/>}/>
             <Route exact path='/convocacao_defensores' element={<Defensor/>}/>
+            <Route exact path='/convocacao_meias' element={<Meia/>}/>
+            <Route exact path='/convocacao_atacantes' element={<Atacante/>}/>
             <Route path='*' element={<Erro/>}/>
         </Routes>
     )

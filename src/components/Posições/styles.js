@@ -32,6 +32,7 @@ export const PlayersArea = styled.div`
     padding: 10px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 `;
 
 export const PlayersPositionRadio = styled.div`
@@ -49,7 +50,6 @@ export const PlayersPosition = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 10px;
 `;
 
 export const PlayerPositionTitle = styled.div`
