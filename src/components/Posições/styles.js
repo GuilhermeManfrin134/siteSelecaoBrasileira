@@ -1,5 +1,28 @@
 import styled from 'styled-components';
 
+export const GPage = styled.section`
+    width: 100%;
+`;
+
+export const GTitle = styled.div`
+    width: 90%;
+    height: 80px;
+    margin: auto;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+`;
+
+export const ButtonArea = styled.div`
+    width: 90%;
+    margin: auto;
+    text-align: right;
+
+    @media screen and (max-width: 600px){
+        text-align: center;
+    }
+`;
+
 export const PlayersArea = styled.div`
     box-sizing: border-box;
     width: 95%;
@@ -16,7 +39,6 @@ export const PlayersPositionRadio = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-
     @media screen and (max-width: 620px){
         width: 100%;
     }
@@ -34,7 +56,6 @@ export const PlayerPositionTitle = styled.div`
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
-
     @media screen and (max-width: 400px){
         font-size: 12px;
         font-weight: 800;
@@ -46,7 +67,6 @@ export const PlayersPositionName = styled.div`
     font-size: 15px;
     display: flex;
     align-items: center;
-
     input{
         cursor: pointer;
     }
@@ -76,8 +96,13 @@ export const PlayerContainer = styled.div`
         }
     }
 
-    svg{
-        margin-right: 5px;
+    a{
+        display: flex;
+        align-items: center;
+    }
+
+    a svg, svg{
+        margin-right: 15px;
         cursor: pointer;
     }
 

@@ -3,8 +3,15 @@ import { DescriptionSite, Psite, ButtonInit } from './styles';
 
 //Importando Icones
 import { MdOutlineSportsSoccer } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 export default function Convocação(){
+
+    let navigate = useNavigate();
+
+    function gol(){
+        return navigate('/convocacao_goleiros');
+    }
 
     return(
         <DescriptionSite>
@@ -26,7 +33,7 @@ export default function Convocação(){
                 Existem jogadores que exercem mais de uma função, então, é possível levar, por exemplo, o jogador Lucas Paquetá, tanto em posição de meio de campo, quanto em posição de ataque, caso ache a quantidade de vagas de uma das posições insuficiente.
             </Psite>
             <div className="alignRight">
-                <ButtonInit onClick={() => {}}>
+                <ButtonInit onClick={gol}>
                     Iniciar
                 </ButtonInit>
             </div>

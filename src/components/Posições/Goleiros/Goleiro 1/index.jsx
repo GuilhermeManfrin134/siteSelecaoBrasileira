@@ -122,10 +122,12 @@ export default function Goleiro1(){
                                 </PlayerStats>
                                 {
                                     larguraTela > 630 ?
-                                    <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                    <div className="close-info">
                                         <CgCloseO onClick={selectOther} size={40} color={`red`}/>
-                                        <ImInfo size={20} color={'var(--greenColor)'}/>
-                                    </Link> 
+                                        <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                            <ImInfo size={20} color={'var(--greenColor)'}/>
+                                        </Link> 
+                                    </div>
                                     :
                                     <div className="close-info" onClick={() => setPlayerModal(`${gol.id}`)}>
                                         <CgCloseO onClick={selectOther} size={40} color={`red`}/>
