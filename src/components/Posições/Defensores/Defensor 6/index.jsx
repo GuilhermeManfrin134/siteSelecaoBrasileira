@@ -1,13 +1,32 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 //Importação de Contexts
 import { UserContext } from "../../../../contexts/user";
 
+//Importando Componentes de Estilização
+import { 
+        PlayersArea, PlayersPositionRadio, 
+        PlayersPositionName, PlayerPositionTitle,
+        PlayerContainer, PlayerStats, PlayerDados,
+        PlayerImg, PlayersPosition
+} from '../../styles';
+
+//Importando Icons
+import { ImInfo } from 'react-icons/im';
+import { CgCloseO } from 'react-icons/cg';
+
+//Importação de Componentes
+import ModalJogadores from "../../../ModalJogadores";
+
 export default function Defensor6(){
 
-    const { player, defensor6, setDefensor6 } = useContext(UserContext);
+    const { larguraTela, player, defensor6, setDefensor6, TextoDefensores } = useContext(UserContext);
 
-    const [textDef, setTextDef] = useState('');
+    const [select, setSelect] = useState(false);
+    const [playerModal, setPlayerModal] = useState('');
+
+    const [textDef, setTextDef] = useState('jogador');
 
     const defensor = player.filter(
         filtro => 
@@ -28,7 +47,7 @@ export default function Defensor6(){
     function verificar(e){
 
         let def = document.getElementsByName('defensor');
-
+        
         for(let i = 0; i <= def.length; i++){
             if(def[i].checked){
                 const g = defensor.filter(g => g.nome === `${def[i].value}`);
@@ -66,32 +85,136 @@ export default function Defensor6(){
                     },
                 ];
                 setDefensor6(d6);
+                setSelect(true);
             }
         }
 
     }
 
+    const [modal, setModal] = useState(false)
+
+    function info(){
+        setModal(true)
+        if(larguraTela > 630){
+            infoFinish();
+        }
+    }
+    function infoFinish(){
+        setModal(false)
+    }
+    function selectOther(){
+        setSelect(false);
+    }
+
     return(
-        <div>
-            <div>
-                <input type="radio" value="LTD" name="defensor" onChange={filtrar}/> Lateral Direito
-                <input type="radio" value="LTE" name="defensor" onChange={filtrar}/> Lateral Esquerdo
-                <input type="radio" value="ZAG" name="defensor" onChange={filtrar}/> Zagueiro
-            </div>
-            <div>
-                Escolha o Defensor
+        <PlayersArea>
+            <PlayerPositionTitle>
                 {
+                    !select ?
+                    TextoDefensores
+                    :
+                    ''
+                }
+            </PlayerPositionTitle>
+
+            {
+                select ? '' 
+                :
+                <PlayersPositionRadio>
+                    <PlayersPositionName>
+                        <input type="radio" value="ZAG" name="defensor" onChange={filtrar}/> ZAG
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="LTD" name="defensor" onChange={filtrar}/> LTD
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="LTE" name="defensor" onChange={filtrar}/> LTE
+                    </PlayersPositionName>
+                </PlayersPositionRadio>
+            }
+
+            <PlayersPosition>
+                <PlayerPositionTitle>
+                    {
+                        select ? 
+                            `Escolhido como ${textDef}:` 
+                        :
+                            `Escolha o ${textDef}`
+                    }
+                </PlayerPositionTitle>
+                {
+                    select ?
+                    defensor6.map(gol => (
+                            <PlayerContainer key={gol.id} value={gol.nome}> 
+                                {
+                                    modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
+                                }
+                                <input type='radio'
+                                    value={gol.nome}
+                                    name='defensor'
+                                    onChange={verificar}
+                                />
+                                <PlayerStats>
+                                    <PlayerImg>
+                                        <img src={gol.foto} alt={gol.nome}/>
+                                    </PlayerImg>
+                                    <PlayerDados>
+                                        <strong>{gol.nome}</strong>
+                                        {gol.clube} {larguraTela > 550 ? ' - ' : <br/>} {gol.campeonato}
+                                    </PlayerDados>
+                                </PlayerStats>
+                                {
+                                    larguraTela > 630 ?
+                                    <div className="close-info">
+                                        <CgCloseO onClick={selectOther} size={40} color={`red`}/>
+                                        <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                            <ImInfo size={20} color={'var(--greenColor)'}/>
+                                        </Link> 
+                                    </div>
+                                    :
+                                    <div className="close-info" onClick={() => setPlayerModal(`${gol.id}`)}>
+                                        <CgCloseO onClick={selectOther} size={40} color={`red`}/>
+                                        <ImInfo onClick={info} size={20} color={'var(--greenColor)'}/>
+                                    </div>
+                                }
+    
+                            </PlayerContainer>
+                        ))
+                    :
                     defensor.map(gol => (
-                        <div key={gol.id}>
+                        <PlayerContainer key={gol.id} value={gol.nome}> 
+                            {
+                                modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
+                            }
                             <input type='radio'
                                 value={gol.nome}
-                                name='defensor' 
+                                name='defensor'
                                 onChange={verificar}
-                            /> {gol.nome}
-                        </div>
+                            />
+                            <PlayerStats>
+                                <PlayerImg>
+                                    <img src={gol.foto} alt={gol.nome}/>
+                                </PlayerImg>
+                                <PlayerDados>
+                                    <strong>{gol.nome}</strong>
+                                    {gol.clube} {larguraTela > 550 ? ' - ' : <br/>} {gol.campeonato}
+                                </PlayerDados>
+                            </PlayerStats>
+                            {
+                                larguraTela > 630 ?
+                                <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                    <ImInfo size={20} color={'var(--greenColor)'}/>
+                                </Link> 
+                                :
+                                <div onClick={() => setPlayerModal(`${gol.id}`)}>
+                                    <ImInfo onClick={info} size={20} color={'var(--greenColor)'}/>
+                                </div>
+                            }
+
+                        </PlayerContainer>
                     ))
                 }
-            </div>
-        </div>
+            </PlayersPosition>
+        </PlayersArea>
     )
 }

@@ -1,13 +1,32 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 //Importação de Contexts
 import { UserContext } from "../../../../contexts/user";
 
+//Importando Componentes de Estilização
+import { 
+        PlayersArea, PlayersPositionRadio, 
+        PlayersPositionName, PlayerPositionTitle,
+        PlayerContainer, PlayerStats, PlayerDados,
+        PlayerImg, PlayersPosition
+} from '../../styles';
+
+//Importando Icons
+import { ImInfo } from 'react-icons/im';
+import { CgCloseO } from 'react-icons/cg';
+
+//Importação de Componentes
+import ModalJogadores from "../../../ModalJogadores";
+
 export default function Meia3(){
 
-    const { player, meia3, setMeia3 } = useContext(UserContext);
+    const { larguraTela, player, meia3, setMeia3, TextoMeias } = useContext(UserContext);
 
-    const [textMeia, setTextMeia] = useState('');
+    const [select, setSelect] = useState(false);
+    const [playerModal, setPlayerModal] = useState('');
+
+    const [textMeia, setTextMeia] = useState('jogador');
 
     const meia = player.filter(
         filtro => 
@@ -28,7 +47,7 @@ export default function Meia3(){
     function verificar(e){
 
         let mei = document.getElementsByName('meia');
-
+        
         for(let i = 0; i <= mei.length; i++){
             if(mei[i].checked){
                 const g = meia.filter(g => g.nome === `${mei[i].value}`);
@@ -66,34 +85,142 @@ export default function Meia3(){
                     },
                 ];
                 setMeia3(m3);
+                setSelect(true);
             }
         }
 
     }
 
+    const [modal, setModal] = useState(false)
+
+    function info(){
+        setModal(true)
+        if(larguraTela > 630){
+            infoFinish();
+        }
+    }
+    function infoFinish(){
+        setModal(false)
+    }
+    function selectOther(){
+        setSelect(false);
+    }
+
     return(
-        <div>
-            <div>
-                <input type="radio" value="VOL" name="meia" onChange={filtrar}/> Volante
-                <input type="radio" value="MC" name="meia" onChange={filtrar}/> Meio Campo
-                <input type="radio" value="MEI" name="meia" onChange={filtrar}/> Meia Atacante
-                <input type="radio" value="MD" name="meia" onChange={filtrar}/> Meia Direita
-                <input type="radio" value="ME" name="meia" onChange={filtrar}/> Meia Esquerda
-            </div>
-            <div>
-                Escolha o Meia
+        <PlayersArea>
+            <PlayerPositionTitle>
                 {
+                    !select ?
+                    TextoMeias
+                    :
+                    ''
+                }
+            </PlayerPositionTitle>
+
+            {
+                select ? '' 
+                :
+                <PlayersPositionRadio>
+                    <PlayersPositionName>
+                        <input type="radio" value="VOL" name="meia" onChange={filtrar}/> VOL
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="MC" name="meia" onChange={filtrar}/> MC
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="MEI" name="meia" onChange={filtrar}/> MEI
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="MD" name="meia" onChange={filtrar}/> MD
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="ME" name="meia" onChange={filtrar}/> ME
+                    </PlayersPositionName>
+                </PlayersPositionRadio>
+            }
+
+            <PlayersPosition>
+                <PlayerPositionTitle>
+                    {
+                        select ? 
+                            `Escolhido como ${textMeia}:` 
+                        :
+                            `Escolha o ${textMeia}`
+                    }
+                </PlayerPositionTitle>
+                {
+                    select ?
+                    meia3.map(gol => (
+                            <PlayerContainer key={gol.id} value={gol.nome}> 
+                                {
+                                    modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
+                                }
+                                <input type='radio'
+                                    value={gol.nome}
+                                    name='meia'
+                                    onChange={verificar}
+                                />
+                                <PlayerStats>
+                                    <PlayerImg>
+                                        <img src={gol.foto} alt={gol.nome}/>
+                                    </PlayerImg>
+                                    <PlayerDados>
+                                        <strong>{gol.nome}</strong>
+                                        {gol.clube} {larguraTela > 550 ? ' - ' : <br/>} {gol.campeonato}
+                                    </PlayerDados>
+                                </PlayerStats>
+                                {
+                                    larguraTela > 630 ?
+                                    <div className="close-info">
+                                        <CgCloseO onClick={selectOther} size={40} color={`red`}/>
+                                        <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                            <ImInfo size={20} color={'var(--greenColor)'}/>
+                                        </Link> 
+                                    </div>
+                                    :
+                                    <div className="close-info" onClick={() => setPlayerModal(`${gol.id}`)}>
+                                        <CgCloseO onClick={selectOther} size={40} color={`red`}/>
+                                        <ImInfo onClick={info} size={20} color={'var(--greenColor)'}/>
+                                    </div>
+                                }
+    
+                            </PlayerContainer>
+                        ))
+                    :
                     meia.map(gol => (
-                        <div key={gol.id}>
+                        <PlayerContainer key={gol.id} value={gol.nome}> 
+                            {
+                                modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
+                            }
                             <input type='radio'
                                 value={gol.nome}
-                                name='meia' 
+                                name='meia'
                                 onChange={verificar}
-                            /> {gol.nome}
-                        </div>
+                            />
+                            <PlayerStats>
+                                <PlayerImg>
+                                    <img src={gol.foto} alt={gol.nome}/>
+                                </PlayerImg>
+                                <PlayerDados>
+                                    <strong>{gol.nome}</strong>
+                                    {gol.clube} {larguraTela > 550 ? ' - ' : <br/>} {gol.campeonato}
+                                </PlayerDados>
+                            </PlayerStats>
+                            {
+                                larguraTela > 630 ?
+                                <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                    <ImInfo size={20} color={'var(--greenColor)'}/>
+                                </Link> 
+                                :
+                                <div onClick={() => setPlayerModal(`${gol.id}`)}>
+                                    <ImInfo onClick={info} size={20} color={'var(--greenColor)'}/>
+                                </div>
+                            }
+
+                        </PlayerContainer>
                     ))
                 }
-            </div>
-        </div>
+            </PlayersPosition>
+        </PlayersArea>
     )
 }

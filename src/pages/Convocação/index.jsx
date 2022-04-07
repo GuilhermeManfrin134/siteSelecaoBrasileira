@@ -4,7 +4,9 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/user";
 
 //Testes
-import Meia1 from '../../components/Posições/Meias/Meia 1';
+import Goleiro1 from "../../components/Posições/Goleiros/Goleiro 1";
+import Goleiro2 from "../../components/Posições/Goleiros/Goleiro 2";
+import Goleiro3 from "../../components/Posições/Goleiros/Goleiro 3";
 
 export default function Convocação(){
 
@@ -12,10 +14,12 @@ export default function Convocação(){
 
     return(
         <>
-            <hr/>
             <div>
-                <Meia1/>
-                <hr/>
+                <Goleiro1/>
+                <Goleiro2/>
+                <Goleiro3/>
+                <br/>
+                
                 {
                     convocados.map((item, index) => (
                         <div key={index}>

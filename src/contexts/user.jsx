@@ -10,6 +10,15 @@ function UserProvider({children}){
     const [player, setPlayer] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    //TAMANHO DA TELA
+    const alturaTela = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    const larguraTela = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+    //TEXTOS
+    const TextoMeias = 'Especifique a posição do meio de campo';
+    const TextoDefensores = 'Especifique a posição da defesa';
+    const TextoAtacantes = 'Especifique a posição de ataque';
+
     //GOLEIROS
     const [goleiro1, setGoleiro1] = useState([]);
     const [goleiro2, setGoleiro2] = useState([]);
@@ -51,6 +60,7 @@ function UserProvider({children}){
     //TODOS OS JOGADORES CONVOCADOS
     const [convocados, setConvocados] = useState([]);
 
+    //ARMAZENAMENTO 
     useEffect(()=> {
 
         setConvocados([
@@ -130,7 +140,7 @@ function UserProvider({children}){
 
     return(
         <UserContext.Provider value={{ 
-                                        player, setPlayer, loading, 
+                                        player, setPlayer, loading, alturaTela, larguraTela,
                                         goleirosConvocados, setGoleirosConvocados,
                                         defensoresConvocados, setDefensoresConvocados,
                                         meiasConvocados, setMeiasConvocados,
@@ -147,7 +157,8 @@ function UserProvider({children}){
                                         atacante1, setAtacante1, atacante2, setAtacante2,
                                         atacante3, setAtacante3, atacante4, setAtacante4,
                                         atacante5, setAtacante5, atacante6, setAtacante6,
-                                        atacante7, setAtacante7, atacante8, setAtacante8
+                                        atacante7, setAtacante7, atacante8, setAtacante8,
+                                        TextoMeias, TextoDefensores, TextoAtacantes
                                     }}>
             {children}
         </UserContext.Provider>

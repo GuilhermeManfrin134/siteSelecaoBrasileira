@@ -1,13 +1,32 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 //Importação de Contexts
 import { UserContext } from "../../../../contexts/user";
 
+//Importando Componentes de Estilização
+import { 
+        PlayersArea, PlayersPositionRadio, 
+        PlayersPositionName, PlayerPositionTitle,
+        PlayerContainer, PlayerStats, PlayerDados,
+        PlayerImg, PlayersPosition
+} from '../../styles';
+
+//Importando Icons
+import { ImInfo } from 'react-icons/im';
+import { CgCloseO } from 'react-icons/cg';
+
+//Importação de Componentes
+import ModalJogadores from "../../../ModalJogadores";
+
 export default function Atacante4(){
 
-    const { player, atacante4, setAtacante4 } = useContext(UserContext);
+    const { larguraTela, player, atacante4, setAtacante4, TextoAtacantes } = useContext(UserContext);
 
-    const [textAta, setTextAta] = useState('');
+    const [select, setSelect] = useState(false);
+    const [playerModal, setPlayerModal] = useState('');
+
+    const [textAta, setTextAta] = useState('jogador');
 
     const atacante = player.filter(
         filtro => 
@@ -66,33 +85,139 @@ export default function Atacante4(){
                     },
                 ];
                 setAtacante4(a4);
+                setSelect(true);
             }
         }
 
     }
 
+    const [modal, setModal] = useState(false)
+
+    function info(){
+        setModal(true)
+        if(larguraTela > 630){
+            infoFinish();
+        }
+    }
+    function infoFinish(){
+        setModal(false)
+    }
+    function selectOther(){
+        setSelect(false);
+    }
+
     return(
-        <div>
-            <div>
-                <input type="radio" value="ATA" name="atacante" onChange={filtrar}/> Atacante
-                <input type="radio" value="PTE" name="atacante" onChange={filtrar}/> Ponta Esquerda
-                <input type="radio" value="PTD" name="atacante" onChange={filtrar}/> Ponta Direita
-                <input type="radio" value="SA" name="atacante" onChange={filtrar}/> Meia Atacante
-            </div>
-            <div>
-                Escolha o Atacante
+        <PlayersArea>
+            <PlayerPositionTitle>
                 {
+                    !select ?
+                    TextoAtacantes
+                    :
+                    ''
+                }
+            </PlayerPositionTitle>
+
+            {
+                select ? '' 
+                :
+                <PlayersPositionRadio>
+                    <PlayersPositionName>
+                        <input type="radio" value="ATA" name="atacante" onChange={filtrar}/> ATA
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="PTD" name="atacante" onChange={filtrar}/> PTD
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="PTE" name="atacante" onChange={filtrar}/> PTE
+                    </PlayersPositionName>
+                    <PlayersPositionName>
+                        <input type="radio" value="SA" name="atacante" onChange={filtrar}/> SA
+                    </PlayersPositionName>
+                </PlayersPositionRadio>
+            }
+
+            <PlayersPosition>
+                <PlayerPositionTitle>
+                    {
+                        select ? 
+                            `Escolhido como ${textAta}:` 
+                        :
+                            `Escolha o ${textAta}`
+                    }
+                </PlayerPositionTitle>
+                {
+                    select ?
+                    atacante4.map(gol => (
+                            <PlayerContainer key={gol.id} value={gol.nome}> 
+                                {
+                                    modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
+                                }
+                                <input type='radio'
+                                    value={gol.nome}
+                                    name='atacante'
+                                    onChange={verificar}
+                                />
+                                <PlayerStats>
+                                    <PlayerImg>
+                                        <img src={gol.foto} alt={gol.nome}/>
+                                    </PlayerImg>
+                                    <PlayerDados>
+                                        <strong>{gol.nome}</strong>
+                                        {gol.clube} {larguraTela > 550 ? ' - ' : <br/>} {gol.campeonato}
+                                    </PlayerDados>
+                                </PlayerStats>
+                                {
+                                    larguraTela > 630 ?
+                                    <div className="close-info">
+                                        <CgCloseO onClick={selectOther} size={40} color={`red`}/>
+                                        <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                            <ImInfo size={20} color={'var(--greenColor)'}/>
+                                        </Link> 
+                                    </div>
+                                    :
+                                    <div className="close-info" onClick={() => setPlayerModal(`${gol.id}`)}>
+                                        <CgCloseO onClick={selectOther} size={40} color={`red`}/>
+                                        <ImInfo onClick={info} size={20} color={'var(--greenColor)'}/>
+                                    </div>
+                                }
+    
+                            </PlayerContainer>
+                        ))
+                    :
                     atacante.map(gol => (
-                        <div key={gol.id}>
+                        <PlayerContainer key={gol.id} value={gol.nome}> 
+                            {
+                                modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
+                            }
                             <input type='radio'
                                 value={gol.nome}
-                                name='atacante' 
+                                name='atacante'
                                 onChange={verificar}
-                            /> {gol.nome}
-                        </div>
+                            />
+                            <PlayerStats>
+                                <PlayerImg>
+                                    <img src={gol.foto} alt={gol.nome}/>
+                                </PlayerImg>
+                                <PlayerDados>
+                                    <strong>{gol.nome}</strong>
+                                    {gol.clube} {larguraTela > 550 ? ' - ' : <br/>} {gol.campeonato}
+                                </PlayerDados>
+                            </PlayerStats>
+                            {
+                                larguraTela > 630 ?
+                                <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                    <ImInfo size={20} color={'var(--greenColor)'}/>
+                                </Link> 
+                                :
+                                <div onClick={() => setPlayerModal(`${gol.id}`)}>
+                                    <ImInfo onClick={info} size={20} color={'var(--greenColor)'}/>
+                                </div>
+                            }
+
+                        </PlayerContainer>
                     ))
                 }
-            </div>
-        </div>
+            </PlayersPosition>
+        </PlayersArea>
     )
 }

@@ -1,18 +1,35 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 //Importação de Contexts
 import { UserContext } from "../../../../contexts/user";
 
+//Importando Componentes de Estilização
+import { PlayersArea, PlayerPositionTitle,
+        PlayerContainer, PlayerStats, PlayerDados,
+        PlayerImg, PlayersPosition
+} from '../../styles';
+
+//Importando Icons
+import { ImInfo } from 'react-icons/im';
+import { CgCloseO } from 'react-icons/cg';
+
+//Importação de Componentes
+import ModalJogadores from "../../../ModalJogadores";
+
 export default function Goleiro1(){
 
-    const { goleiro1, setGoleiro1, player } = useContext(UserContext);
+    const { larguraTela, goleiro1, setGoleiro1, player } = useContext(UserContext);
+
+    const [select, setSelect] = useState(false);
+    const [playerModal, setPlayerModal] = useState('');
 
     const goleiro = player.filter(filtro => filtro.posicao[0] === "GOL");
 
     function verificar(e){
-
+        
         let gol = document.getElementsByName('goleiro');
-
+        
         for(let i = 0; i <= gol.length; i++){
             if(gol[i].checked){
                 const g = goleiro.filter(g => g.nome === `${gol[i].value}`);
@@ -50,26 +67,109 @@ export default function Goleiro1(){
                     },
                 ];
                 setGoleiro1(g1);
+                setSelect(true);
             }
         }
 
     }
 
+    const [modal, setModal] = useState(false)
+
+    function info(){
+        setModal(true)
+        if(larguraTela > 630){
+            infoFinish();
+        }
+    }
+    function infoFinish(){
+        setModal(false)
+    }
+    function selectOther(){
+        setSelect(false);
+    }
+
     return(
-        <div>
-            <div>
+        <PlayersArea>
+            <PlayersPosition>
+                <PlayerPositionTitle>
+                    {
+                        select ? 
+                            `Escolhido como Goleiro:` 
+                        :
+                            `Escolha o Goleiro`
+                    }
+                </PlayerPositionTitle>
                 {
+                    select ?
+                    goleiro1.map(gol => (
+                            <PlayerContainer key={gol.id} value={gol.nome}> 
+                                {
+                                    modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
+                                }
+                                <input type='radio'
+                                    value={gol.nome}
+                                    name='goleiro'
+                                    onChange={verificar}
+                                />
+                                <PlayerStats>
+                                    <PlayerImg>
+                                        <img src={gol.foto} alt={gol.nome}/>
+                                    </PlayerImg>
+                                    <PlayerDados>
+                                        <strong>{gol.nome}</strong>
+                                        {gol.clube} {larguraTela > 550 ? ' - ' : <br/>} {gol.campeonato}
+                                    </PlayerDados>
+                                </PlayerStats>
+                                {
+                                    larguraTela > 630 ?
+                                    <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                        <CgCloseO onClick={selectOther} size={40} color={`red`}/>
+                                        <ImInfo size={20} color={'var(--greenColor)'}/>
+                                    </Link> 
+                                    :
+                                    <div className="close-info" onClick={() => setPlayerModal(`${gol.id}`)}>
+                                        <CgCloseO onClick={selectOther} size={40} color={`red`}/>
+                                        <ImInfo onClick={info} size={20} color={'var(--greenColor)'}/>
+                                    </div>
+                                }
+    
+                            </PlayerContainer>
+                        ))
+                    :
                     goleiro.map(gol => (
-                        <div key={gol.id}>
+                        <PlayerContainer key={gol.id} value={gol.nome}> 
+                            {
+                                modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
+                            }
                             <input type='radio'
                                 value={gol.nome}
-                                name='goleiro' 
+                                name='goleiro'
                                 onChange={verificar}
-                            /> {gol.nome}
-                        </div>
+                            />
+                            <PlayerStats>
+                                <PlayerImg>
+                                    <img src={gol.foto} alt={gol.nome}/>
+                                </PlayerImg>
+                                <PlayerDados>
+                                    <strong>{gol.nome}</strong>
+                                    {gol.clube} {larguraTela > 550 ? ' - ' : <br/>} {gol.campeonato}
+                                </PlayerDados>
+                            </PlayerStats>
+                            {
+                                larguraTela > 630 ?
+                                <Link target="_blank" to={`/jogadores/${gol.id}`}>
+                                    <ImInfo size={20} color={'var(--greenColor)'}/>
+                                </Link> 
+                                :
+                                <div onClick={() => setPlayerModal(`${gol.id}`)}>
+                                    <ImInfo onClick={info} size={20} color={'var(--greenColor)'}/>
+                                </div>
+                            }
+
+                        </PlayerContainer>
                     ))
                 }
-            </div>
-        </div>
+            </PlayersPosition>
+        </PlayersArea>
     )
 }

@@ -1,44 +1,36 @@
-import { useContext } from "react"
-import { useParams } from "react-router-dom";
+import { useContext } from 'react';
 
-//Importando Páginas
-import Erro from "../Erro";
-
-//Importando de Componentes de Estilização
+//Importação Componentes de Estilização
+import { ModalPlayers } from './styles';
 import { 
     JogadorBr, JogadorBrUp, JogadorImg, BrDados, BrClube,
     JogadorBrDesc, JogadorBrName, JogadorBrDados, JogadorBrAtua,
     JogadorBrDown, JogadorBrCarreira, JogadorBrCarreiraDados,
     JogadorBrPosicoes
-} from './styles';
+} from '../../pages/Jogador/styles';
 
-//Importando Foto Padrão
-import foto from '../../assets/avatar.png';
+//Importando Icons
+import { IoIosCloseCircle } from 'react-icons/io';
 
 //Importando Contexts
-import { UserContext } from "../../contexts/user";
+import { UserContext } from '../../contexts/user';
 
-export default function Jogador(){
+export default function ModalJogadores({idj, infoFinish}){
 
-    const { id } = useParams();
     const { player } = useContext(UserContext);
 
-    const jogadorFiltrado = player.filter(item => item.id === `${id}`);
-
-    if(jogadorFiltrado.length === 0){
-        return(
-            <Erro />
-        )
-    }
+    const jogadorFiltrado = player.filter(item => item.id === `${idj}`);
 
     return(
-        <JogadorBr>
+        <ModalPlayers>
+            <IoIosCloseCircle onClick={infoFinish} size={50} color={`red`}/>
+            <JogadorBr>
             {
                 jogadorFiltrado.map(jogador => (
                     <div key={jogador.id}>
                         <JogadorBrUp>
                             <JogadorImg>
-                                <img src={jogador.foto ? jogador.foto : foto} alt={jogador.nome} />
+                                <img src={jogador.foto} alt={jogador.nome} />
                             </JogadorImg>
                             <JogadorBrDesc>
                                 <JogadorBrName>
@@ -100,6 +92,7 @@ export default function Jogador(){
                     </div>
                 ))
             }
-        </JogadorBr>
+            </JogadorBr>
+        </ModalPlayers>
     )
 }

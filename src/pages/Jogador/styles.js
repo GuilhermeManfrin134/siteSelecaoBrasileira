@@ -33,6 +33,8 @@ export const JogadorImg = styled.div`
     @media screen and (max-width: 630px){
         flex-direction: column;
         margin: auto;
+        width: 100px;
+        height: 100px;
     }
 
     img{
@@ -171,5 +173,10 @@ export const JogadorBrPosicoes = styled.div`
         strong{
             margin-right: 25px;
         }
+    }
+
+    @media screen and (max-width: 630px){
+        flex-direction: column;
+        justify-content: space-around;
     }
 `;
