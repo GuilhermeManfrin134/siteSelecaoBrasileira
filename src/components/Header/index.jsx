@@ -1,38 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-//Importando APIs
-import api_br from '../../services/api_br';
+//Importando Contexts
+import { UserContext } from '../../contexts/user';
 
 //Importando Componentes de Estilização
 import { HeaderBr, HeaderDivision, HeaderIcon, HeaderTitle } from './styles';
 
 export default function Header(){
 
-    const [data, setData] = useState([]);
+    const { cbf } = useContext(UserContext);
     
-    useEffect(() => {
-
-        async function loadData(){
-            const response = await api_br.get('')
-            
-            setData(response.data);
-        }
-        loadData();
-
-    }, []);
+    
 
     return(
         <HeaderBr>
-                {data.map((item, index) => (
+                {cbf.map((item, index) => (
                     <HeaderDivision key={index}>
                             <HeaderIcon>
-                                <img src={item.confederacao_icon} alt='Icon da CBF'/>
+                                <Link to='/'>
+                                    <img src={item.confederacao_icon} alt='Icon da CBF'/>
+                                </Link>
                             </HeaderIcon>
                             <HeaderTitle>
-                                ESCALE SUA SELEÇÃO
+                                <Link to='/'>
+                                    ESCALE SUA SELEÇÃO
+                                </Link>
                             </HeaderTitle>
                             <HeaderIcon>
-                                <img src={item.confederacao_icon} alt='Icon da CBF'/>
+                                <Link to='/'>
+                                    <img src={item.confederacao_icon} alt='Icon da CBF'/>
+                                </Link>
                             </HeaderIcon>
                     </HeaderDivision>
                 ))}

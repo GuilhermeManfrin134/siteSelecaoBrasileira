@@ -2,12 +2,14 @@ import { useState, createContext, useEffect } from "react";
 
 //Importação de APIs
 import api from "../services/api";
+import api_br from '../services/api_br';
 
 export const UserContext = createContext({});
 
 function UserProvider({children}){
 
     const [player, setPlayer] = useState([]);
+    const [cbf, setCBF] = useState([]);
     const [loading, setLoading] = useState(true);
 
     //TAMANHO DA TELA
@@ -200,9 +202,20 @@ function UserProvider({children}){
 
     }, [setPlayer]);
 
+    useEffect(() => {
+
+        async function loadData(){
+            const response = await api_br.get('')
+            
+            setCBF(response.data);
+        }
+        loadData();
+
+    }, []);
+
     return(
         <UserContext.Provider value={{ 
-                                        player, setPlayer, loading, alturaTela, larguraTela,
+                                        player, cbf, setPlayer, loading, alturaTela, larguraTela,
                                         goleirosConvocados, setGoleirosConvocados,
                                         defensoresConvocados, setDefensoresConvocados,
                                         meiasConvocados, setMeiasConvocados,
