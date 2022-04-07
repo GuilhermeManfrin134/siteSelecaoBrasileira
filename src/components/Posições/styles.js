@@ -143,6 +143,10 @@ export const PlayerDados = styled.div`
     justify-content: center;
     margin-left: 5px;
     padding-left: 15px;
+
+    @media screen and (max-width: 400px){
+        font-size: 12px;
+    }
 `;
 
 export const PlayerImg = styled.div`
@@ -154,5 +158,10 @@ export const PlayerImg = styled.div`
     
     img{
         width: 100%;
+    }
+
+    @media screen and (max-width: 400px){
+        width: 40px;
+        height: 40px;
     }
 `;
