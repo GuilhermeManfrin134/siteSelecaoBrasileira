@@ -73,6 +73,7 @@ export const PlayersPositionName = styled.div`
 `;
 
 export const PlayerContainer = styled.div`
+    box-sizing: border-box;
     width: 100%;
     height: 80px;
     display: flex;
@@ -80,6 +81,7 @@ export const PlayerContainer = styled.div`
     background-color: var(--whiteColor);
     margin-bottom: 5px;
     border-radius: 10px;
+    padding: 5px;
 
     .close-info{
         display: flex;
@@ -120,6 +122,7 @@ export const PlayerStats = styled.div`
 `;
 
 export const PlayerDados = styled.div`
+    box-sizing: border-box;
     width: 70%;
     display: flex;
     flex-direction: column;
