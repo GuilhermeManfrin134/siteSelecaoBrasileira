@@ -6,22 +6,46 @@ export const SectionBr = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .home-buttons{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
 `;
 
 export const ButtonBr = styled.button`
-    width: 450px;
-    height: 100px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 60px;
     margin: 15px 0 15px;
+    padding: 20px;
     border-radius: 20px;
     border: 2px solid var(--greenColor);
     background-color: var(--greenColor);
     color: var(--whiteColor);
-    font-size: 25px;
+    font-size: 15px;
     font-weight: 1000;
     cursor: pointer;
+
+    svg{
+        margin-right: 10px;
+    }
     
-    @media screen and (max-width: 520px){
-        width: 80%;
+    @media screen and (max-width: 620px){
+        width: 150px;
+        font-size: 10px;
+    }
+    @media screen and (max-width: 400px){
+        width: 80px;
+
+        svg{
+            display: none;
+        }
     }
 
     transition: ease-in-out .1s;

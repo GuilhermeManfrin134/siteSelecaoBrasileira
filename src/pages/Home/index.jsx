@@ -8,6 +8,10 @@ import Loading from '../../components/Loading';
 //Importação de Componentes de Estilização
 import { SectionBr, ButtonBr, TitleBr, MainBr } from './styles';
 
+//Importando Icons
+import { GiSoccerField, GiSoccerKick } from 'react-icons/gi';
+import { FaThList } from 'react-icons/fa';
+
 //Imprtando Contexts
 import { UserContext } from '../../contexts/user';
 
@@ -20,11 +24,26 @@ export default function Home(){
         return navigate('/convocacao_selecao');
     }
 
+    function selecao(){
+        return navigate('/selecao');
+    }
+
     return(
         <SectionBr>
-            <ButtonBr onClick={start}>
-                    Comece sua convocação
-            </ButtonBr>
+            <div className='home-buttons'>
+                <ButtonBr onClick={start}>
+                    <GiSoccerKick size={40}/>
+                        Inicie sua convocação
+                </ButtonBr>
+                <ButtonBr onClick={selecao}>
+                        <FaThList size={30}/>
+                        Sua convocação
+                </ButtonBr>
+                <ButtonBr onClick={() => {}}>
+                        <GiSoccerField size={40}/>
+                        Seu time
+                </ButtonBr>
+            </div>
             <TitleBr>
                 OPÇÕES DE ESCOLHA:
             </TitleBr>
@@ -33,8 +52,8 @@ export default function Home(){
                     loading ? <Loading/> : <AllPlayers/> 
                 }
             </MainBr>
-            <ButtonBr onClick={() => {}}>
-                Comece sua convocação
+            <ButtonBr onClick={start}>
+                Inicie sua convocação
             </ButtonBr>
         </SectionBr>
     )
