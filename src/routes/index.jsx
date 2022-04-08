@@ -10,6 +10,7 @@ import Defensor from '../components/Defensor';
 import Meia from '../components/Meia';
 import Atacante from '../components/Atacante';
 import Seleção from '../components/Seleção';
+import Time from '../components/Time';
 
 export default function Routex(){
 
@@ -22,6 +23,7 @@ export default function Routex(){
             <Route exact path='/convocacao_defensores' element={<Defensor/>}/>
             <Route exact path='/convocacao_meias' element={<Meia/>}/>
             <Route exact path='/convocacao_atacantes' element={<Atacante/>}/>
+            <Route exact path='/selecao_time' element={<Time/>}/>
             <Route exact path='/selecao' element={<Seleção/>}/>
             <Route path='*' element={<Erro/>}/>
         </Routes>

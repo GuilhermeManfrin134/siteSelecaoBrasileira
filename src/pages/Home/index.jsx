@@ -28,20 +28,24 @@ export default function Home(){
         return navigate('/selecao');
     }
 
+    function time(){
+        return navigate('/selecao_time');
+    }
+
     return(
         <SectionBr>
             <div className='home-buttons'>
-                <ButtonBr onClick={start}>
-                    <GiSoccerKick size={40}/>
-                        Inicie sua convocação
+                <ButtonBr onClick={time}>
+                        <GiSoccerField size={40}/>
+                        Seu time
                 </ButtonBr>
                 <ButtonBr onClick={selecao}>
                         <FaThList size={30}/>
                         Sua convocação
                 </ButtonBr>
-                <ButtonBr onClick={() => {}}>
-                        <GiSoccerField size={40}/>
-                        Seu time
+                <ButtonBr onClick={start}>
+                        <GiSoccerKick size={40}/>
+                        Inicie sua convocação
                 </ButtonBr>
             </div>
             <TitleBr>
@@ -53,6 +57,7 @@ export default function Home(){
                 }
             </MainBr>
             <ButtonBr onClick={start}>
+                <GiSoccerKick size={40}/>
                 Inicie sua convocação
             </ButtonBr>
         </SectionBr>

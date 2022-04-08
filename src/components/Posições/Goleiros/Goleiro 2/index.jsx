@@ -20,7 +20,7 @@ import ModalJogadores from "../../../ModalJogadores";
 
 export default function Goleiro2(){
 
-    const { goleiro2, setGoleiro2, player, larguraTela } = useContext(UserContext);
+    const { goleiro2, setGoleiro2, player, larguraTela, goleirosConvocados } = useContext(UserContext);
 
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
@@ -42,7 +42,12 @@ export default function Goleiro2(){
         localStorage.setItem('goleiro2', JSON.stringify(goleiro2));
       }, [goleiro2]);
 
-    const goleiro = player.filter(filtro => filtro.posicao[0] === "GOL");
+    const gn = goleirosConvocados.map(item => item.nome);
+    const goleiro = player.filter(
+                                    filtro => filtro.posicao[0] === "GOL" 
+                                    && filtro.nome !== `${gn[0]}`
+                                    && filtro.nome !== `${gn[1]}`
+                                );
 
     function verificar(e){
 

@@ -21,7 +21,7 @@ import ModalJogadores from "../../../ModalJogadores";
 
 export default function Defensor2(){
 
-    const { larguraTela, player, defensor2, setDefensor2, TextoDefensores } = useContext(UserContext);
+    const { larguraTela, player, defensor2, setDefensor2, TextoDefensores, defensoresConvocados, meiasConvocados, atacantesConvocados } = useContext(UserContext);
 
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
@@ -46,15 +46,31 @@ export default function Defensor2(){
 
     const [textDef, setTextDef] = useState('jogador');
 
-    const defensor = player.filter(
+    const dn = defensoresConvocados.map(item => item.nome);
+    const mn = meiasConvocados.map(item => item.nome);
+    const an = atacantesConvocados.map(item => item.nome);
+    const defesa = player.filter(
         filtro => 
         filtro.posicao[0] === `${textDef}` || 
-        filtro.posicao[1] === `${textDef}` ||
-        filtro.posicao[2] === `${textDef}` ||
-        filtro.posicao[3] === `${textDef}` ||
-        filtro.posicao[4] === `${textDef}` ||
-        filtro.posicao[5] === `${textDef}` ||
-        filtro.posicao[6] === `${textDef}`
+        filtro.posicao[1] === `${textDef}` || 
+        filtro.posicao[2] === `${textDef}` || 
+        filtro.posicao[3] === `${textDef}` || 
+        filtro.posicao[4] === `${textDef}` || 
+        filtro.posicao[5] === `${textDef}` || 
+        filtro.posicao[6] === `${textDef}` 
+    );
+
+    const defensor = defesa.filter(
+        filtro =>
+        filtro.nome !== `${dn[0]}` && filtro.nome !== `${mn[0]}` && filtro.nome !== `${an[0]}` &&
+        filtro.nome !== `${dn[1]}` && filtro.nome !== `${mn[1]}` && filtro.nome !== `${an[1]}` &&
+        filtro.nome !== `${dn[2]}` && filtro.nome !== `${mn[2]}` && filtro.nome !== `${an[2]}` &&
+        filtro.nome !== `${dn[3]}` && filtro.nome !== `${mn[3]}` && filtro.nome !== `${an[3]}` &&
+        filtro.nome !== `${dn[4]}` && filtro.nome !== `${mn[4]}` && filtro.nome !== `${an[4]}` &&
+        filtro.nome !== `${dn[5]}` && filtro.nome !== `${mn[5]}` && filtro.nome !== `${an[5]}` &&
+        filtro.nome !== `${dn[6]}` && filtro.nome !== `${mn[6]}` && filtro.nome !== `${an[6]}` &&
+        filtro.nome !== `${dn[7]}` && filtro.nome !== `${mn[7]}` && filtro.nome !== `${an[7]}` && 
+        filtro.nome !== `${dn[8]}` &&                               filtro.nome !== `${an[8]}`
     );
 
     function filtrar(){
