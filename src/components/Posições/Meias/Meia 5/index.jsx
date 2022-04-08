@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -25,6 +25,23 @@ export default function Meia5(){
 
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
+
+    useEffect(() => {
+        const m5Storage = localStorage.getItem('meia5');
+    
+        if(m5Storage){
+            setMeia5(JSON.parse(m5Storage));
+        }
+        if(m5Storage.length === 2){
+            setSelect(false);
+        }else{
+            setSelect(true);
+        }
+      }, [setMeia5]);
+    
+      useEffect(() => {
+        localStorage.setItem('meia5', JSON.stringify(meia5));
+      }, [meia5]);
 
     const [textMeia, setTextMeia] = useState('jogador');
 

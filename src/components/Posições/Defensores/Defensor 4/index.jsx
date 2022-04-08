@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -25,6 +25,24 @@ export default function Defensor4(){
 
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
+
+    useEffect(() => {
+        const d4Storage = localStorage.getItem('defensor4');
+        
+        if(d4Storage){
+            setDefensor4(JSON.parse(d4Storage));
+        }
+        if(d4Storage.length === 2){
+            setSelect(false);
+        }else{
+            setSelect(true);
+        }
+
+      }, [setDefensor4]);
+    
+      useEffect(() => {
+        localStorage.setItem('defensor4', JSON.stringify(defensor4));
+      }, [defensor4]);
 
     const [textDef, setTextDef] = useState('jogador');
 

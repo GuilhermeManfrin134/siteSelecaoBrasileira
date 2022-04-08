@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -25,6 +25,23 @@ export default function Atacante2(){
 
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
+
+    useEffect(() => {
+        const a2Storage = localStorage.getItem('atacante2');
+    
+        if(a2Storage){
+            setAtacante2(JSON.parse(a2Storage));
+        }
+        if(a2Storage.length === 2){
+            setSelect(false);
+        }else{
+            setSelect(true);
+        }
+      }, [setAtacante2]);
+    
+      useEffect(() => {
+        localStorage.setItem('atacante2', JSON.stringify(atacante2));
+      }, [atacante2]);
 
     const [textAta, setTextAta] = useState('jogador');
 

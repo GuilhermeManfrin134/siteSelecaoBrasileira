@@ -28,8 +28,12 @@ export default function Goleiro1(){
         const g1Storage = localStorage.getItem('goleiro1');
     
         if(g1Storage){
-          setGoleiro1(JSON.parse(g1Storage));
-          setSelect(true);
+            setGoleiro1(JSON.parse(g1Storage));
+        }
+        if(g1Storage.length === 2){
+            setSelect(false);
+        }else{
+            setSelect(true);
         }
       }, [setGoleiro1]);
     

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -24,6 +24,23 @@ export default function Goleiro3(){
 
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
+
+    useEffect(() => {
+        const g3Storage = localStorage.getItem('goleiro3');
+    
+        if(g3Storage){
+            setGoleiro3(JSON.parse(g3Storage));
+        }
+        if(g3Storage.length === 2){
+            setSelect(false);
+        }else{
+            setSelect(true);
+        }
+      }, [setGoleiro3]);
+    
+      useEffect(() => {
+        localStorage.setItem('goleiro3', JSON.stringify(goleiro3));
+      }, [goleiro3]);
 
     const goleiro = player.filter(filtro => filtro.posicao[0] === "GOL");
 
