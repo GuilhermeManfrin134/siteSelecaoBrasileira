@@ -85,8 +85,12 @@ export const Campo = styled.div`
     height: 450px;
     background: ${(props) => `url(${props.foto})`};
     background-repeat: no-repeat;
-    background-size: contain;
-    border-radius: 4px;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    border-radius: 10px;
     
     @media screen and (max-width: 920px){
         width: 400px;
@@ -95,10 +99,9 @@ export const Campo = styled.div`
     }
     
     @media screen and (max-width: 450px){
-        width: 100%;
+        width: 95%;
         margin: 15px auto;
         height: 550px;
-        background: linear-gradient(green, var(--greenColor));
     }
 `;
 export const AreaCampo = styled.div`
