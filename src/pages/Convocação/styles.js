@@ -19,6 +19,12 @@ export const DescriptionSite = styled.section`
         list-style: none;
     }
 
+    .alignCenter{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
     .alignRight{
        text-align: right;
     }

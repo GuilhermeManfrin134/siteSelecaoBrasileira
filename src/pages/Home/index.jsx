@@ -18,6 +18,7 @@ import { UserContext } from '../../contexts/user';
 export default function Home(){
     
     const { loading } = useContext(UserContext);
+
     let navigate = useNavigate();
 
     function start(){

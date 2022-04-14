@@ -63,32 +63,56 @@ function UserProvider({children}){
     const selecao = [];
     const [convocados, setConvocados] = useState(selecao);
 
-    //ARMAZENAMENTO 
+    //TITULARES
+    const [titular1, setTitular1] = useState([]);
+    const [titular2, setTitular2] = useState([]);
+    const [titular3, setTitular3] = useState([]);
+    const [titular4, setTitular4] = useState([]);
+    const [titular5, setTitular5] = useState([]);
+    const [titular6, setTitular6] = useState([]);
+    const [titular7, setTitular7] = useState([]);
+    const [titular8, setTitular8] = useState([]);
+    const [titular9, setTitular9] = useState([]);
+    const [titular10, setTitular10] = useState([]);
+    const [titular11, setTitular11] = useState([]);
+
+    //TODOS OS TITULARES
+    const titular = [];
+    const [titulares, setTitulares] = useState(titular)
+
     useEffect(()=> {
 
-        setConvocados([
-            ...goleirosConvocados,
-            ...defensoresConvocados,
-            ...meiasConvocados,
-            ...atacantesConvocados
+        setTitulares([
+            ...titular1,
+            ...titular2,
+            ...titular3,
+            ...titular4,
+            ...titular5,
+            ...titular6,
+            ...titular7,
+            ...titular8,
+            ...titular9,
+            ...titular10,
+            ...titular11
         ]);
 
-    }, [atacantesConvocados, defensoresConvocados, meiasConvocados, goleirosConvocados]);
+    }, [titular1, setTitulares, titular2, titular3, titular4, titular5, titular6, titular7, titular8, titular9, titular10, titular11]);
+
+    //ARMAZENAMENTO 
 
     useEffect(() => {
-        const cStorage = localStorage.getItem('convocados');
+        const cStorage = localStorage.getItem('titulares');
     
         if(cStorage){
-          setConvocados(JSON.parse(cStorage));
+          setTitulares(JSON.parse(cStorage));
         }
-    }, [setConvocados]);
+    }, [setTitulares]);
     
     useEffect(() => {
-      localStorage.setItem('convocados', JSON.stringify(convocados));
-    }, [convocados]);
+      localStorage.setItem('titulares', JSON.stringify(titulares));
+    }, [titulares]);
 
     useEffect(()=>{
-
         setGoleirosConvocados([
             ...goleiro1,
             ...goleiro2,
@@ -96,18 +120,6 @@ function UserProvider({children}){
         ]);
 
     },[goleiro1, setGoleirosConvocados, goleiro2, goleiro3]);
-
-    useEffect(() => {
-        const gStorage = localStorage.getItem('goleirosConvocados');
-    
-        if(gStorage){
-          setGoleirosConvocados(JSON.parse(gStorage));
-        }
-    }, [setGoleirosConvocados]);
-    
-    useEffect(() => {
-      localStorage.setItem('goleirosConvocados', JSON.stringify(goleirosConvocados));
-    }, [goleirosConvocados]);
 
     useEffect(()=>{
 
@@ -124,18 +136,6 @@ function UserProvider({children}){
 
     },[defensor1, defensor2, defensor3, defensor4, defensor5, defensor6, defensor7, defensor8, setDefensoresConvocados]);
 
-    useEffect(() => {
-        const dStorage = localStorage.getItem('defensoresConvocados');
-    
-        if(dStorage){
-          setDefensoresConvocados(JSON.parse(dStorage));
-        }
-    }, [setDefensoresConvocados]);
-    
-    useEffect(() => {
-      localStorage.setItem('defensoresConvocados', JSON.stringify(defensoresConvocados));
-    }, [defensoresConvocados]);
-
     useEffect(()=>{
 
         setMeiasConvocados([
@@ -149,18 +149,6 @@ function UserProvider({children}){
         ]);
 
     },[meia1, meia2, meia3, meia4, meia5, meia6, meia7, setMeiasConvocados]);
-
-    useEffect(() => {
-        const mStorage = localStorage.getItem('meiasConvocados');
-    
-        if(mStorage){
-          setMeiasConvocados(JSON.parse(mStorage));
-        }
-    }, [setMeiasConvocados]);
-    
-    useEffect(() => {
-      localStorage.setItem('meiasConvocados', JSON.stringify(meiasConvocados));
-    }, [meiasConvocados]);
 
     useEffect(()=>{
 
@@ -176,6 +164,65 @@ function UserProvider({children}){
         ]);
 
     },[atacante1, atacante2, atacante3, atacante4, atacante5, atacante6, atacante7, atacante8, setAtacantesConvocados]);
+
+    useEffect(()=> {
+
+        setConvocados([
+            ...goleirosConvocados,
+            ...defensoresConvocados,
+            ...meiasConvocados,
+            ...atacantesConvocados
+        ]);
+
+    }, [atacantesConvocados, defensoresConvocados, meiasConvocados, goleirosConvocados, setConvocados]);
+
+    useEffect(() => {
+        const cStorage = localStorage.getItem('convocados');
+    
+        if(cStorage){
+          setConvocados(JSON.parse(cStorage));
+        }
+    }, [setConvocados]);
+    
+    useEffect(() => {
+      localStorage.setItem('convocados', JSON.stringify(convocados));
+    }, [convocados]);
+
+    useEffect(() => {
+        const gStorage = localStorage.getItem('goleirosConvocados');
+    
+        if(gStorage){
+          setGoleirosConvocados(JSON.parse(gStorage));
+        }
+    }, [setGoleirosConvocados]);
+    
+    useEffect(() => {
+      localStorage.setItem('goleirosConvocados', JSON.stringify(goleirosConvocados));
+    }, [goleirosConvocados]);
+
+    useEffect(() => {
+        const dStorage = localStorage.getItem('defensoresConvocados');
+    
+        if(dStorage){
+          setDefensoresConvocados(JSON.parse(dStorage));
+        }
+    }, [setDefensoresConvocados]);
+    
+    useEffect(() => {
+      localStorage.setItem('defensoresConvocados', JSON.stringify(defensoresConvocados));
+    }, [defensoresConvocados]);
+
+    useEffect(() => {
+        const mStorage = localStorage.getItem('meiasConvocados');
+    
+        if(mStorage){
+          setMeiasConvocados(JSON.parse(mStorage));
+        }
+    }, [setMeiasConvocados]);
+    
+    useEffect(() => {
+      localStorage.setItem('meiasConvocados', JSON.stringify(meiasConvocados));
+    }, [meiasConvocados]);
 
     useEffect(() => {
         const aStorage = localStorage.getItem('atacantesConvocados');
@@ -216,6 +263,7 @@ function UserProvider({children}){
     return(
         <UserContext.Provider value={{ 
                                         player, cbf, setPlayer, loading, alturaTela, larguraTela,
+                                        setConvocados,
                                         goleirosConvocados, setGoleirosConvocados,
                                         defensoresConvocados, setDefensoresConvocados,
                                         meiasConvocados, setMeiasConvocados,
@@ -233,7 +281,13 @@ function UserProvider({children}){
                                         atacante3, setAtacante3, atacante4, setAtacante4,
                                         atacante5, setAtacante5, atacante6, setAtacante6,
                                         atacante7, setAtacante7, atacante8, setAtacante8,
-                                        TextoMeias, TextoDefensores, TextoAtacantes
+                                        TextoMeias, TextoDefensores, TextoAtacantes,
+                                        titular1, setTitular1, titular2, setTitular2,
+                                        titular3, setTitular3, titular4, setTitular4,
+                                        titular5, setTitular5, titular6, setTitular6,
+                                        titular7, setTitular7, titular8, setTitular8,
+                                        titular9, setTitular9, titular10, setTitular10,
+                                        titular11, setTitular11, titulares
                                     }}>
             {children}
         </UserContext.Provider>
