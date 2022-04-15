@@ -1,20 +1,10 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom"
 
 //Importando Pages
 import Erro from "../Erro";
 
 //Importação de Componentes
-import F_4_3_3 from "../../components/Formações/4-3-3";
-
-//Importando Componentes de Estilização
-import { GPage, GTitle } from "../../components/Posições/styles";
-import { AreaCampo, AreaEscalacao, AreaJog, Campo, JogIcon, ListEscalacao, TitularDados, TitularIcon, TitularList, TitularStats } from "./styles";
-import { useContext } from "react";
-import { UserContext } from "../../contexts/user";
-
-
-
-import foto from '../../assets/Campo_Futebol.jpg';
 import F_4_4_2 from "../../components/Formações/4-4-2";
 import F_3_5_2 from "../../components/Formações/3-5-2";
 import F_5_2_3 from "../../components/Formações/5-2-3";
@@ -23,6 +13,15 @@ import F_3_6_1 from "../../components/Formações/3-6-1";
 import F_4_1_4_1 from "../../components/Formações/4-1-4-1";
 import F_5_4_1 from "../../components/Formações/5-4-1";
 import F_4_2_2_2 from "../../components/Formações/4-2-2-2";
+import F_4_3_3 from "../../components/Formações/4-3-3";
+
+//Importando Componentes de Estilização
+import { GPage, GTitle } from "../../components/Posições/styles";
+import { AreaCampo, AreaEscalacao, AreaJog, Campo, JogIcon, ListEscalacao, TitularDados, TitularIcon, TitularList, TitularStats } from "./styles";
+import { UserContext } from "../../contexts/user";
+
+//Importando imagem de Campo para Background
+import foto from '../../assets/Campo_Futebol.jpg';
 
 export default function Selecionar(){
 

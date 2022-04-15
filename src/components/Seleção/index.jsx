@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 //Importação de Contexts
 import { UserContext } from "../../contexts/user";
@@ -9,10 +9,12 @@ import { PlayersArea, PlayerPositionTitle,
         PlayerContainer, PlayerStats, PlayerDados,
         PlayerImg, PlayersPosition
 } from '../../components/Posições/styles';
+import { ButtonBr } from "../../pages/Home/styles";
 
 //Importando Icons
 import { ImInfo } from 'react-icons/im';
 import { FaEdit } from 'react-icons/fa';
+import { GiSoccerField } from "react-icons/gi";
 
 //Importação de Componentes
 import ModalJogadores from "../../components/ModalJogadores";
@@ -20,7 +22,7 @@ import ModalJogadores from "../../components/ModalJogadores";
 export default function Seleção(){
 
     const { larguraTela, goleirosConvocados, defensoresConvocados, meiasConvocados, atacantesConvocados } = useContext(UserContext);
-
+    let navigate = useNavigate();
     const [playerModal, setPlayerModal] = useState('');
     const [modal, setModal] = useState(false)
 
@@ -32,6 +34,10 @@ export default function Seleção(){
     }
     function infoFinish(){
         setModal(false)
+    }
+    
+    function time(){
+        return navigate('/selecao_time');
     }
 
     return(
@@ -191,6 +197,13 @@ export default function Seleção(){
                     ))
                 }
             </PlayersPosition>
+            {
+                goleirosConvocados && defensoresConvocados && meiasConvocados && atacantesConvocados ?
+                <ButtonBr onClick={time}>
+                        <GiSoccerField size={40}/>
+                        Time Titular
+                </ButtonBr> : ''
+            }
         </PlayersArea>
     )
 }

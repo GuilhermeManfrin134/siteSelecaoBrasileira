@@ -9,7 +9,7 @@ import Loading from '../../components/Loading';
 import { SectionBr, ButtonBr, TitleBr, MainBr } from './styles';
 
 //Importando Icons
-import { GiSoccerField, GiSoccerKick } from 'react-icons/gi';
+import { GiSoccerKick } from 'react-icons/gi';
 import { FaThList } from 'react-icons/fa';
 
 //Imprtando Contexts
@@ -29,17 +29,9 @@ export default function Home(){
         return navigate('/selecao');
     }
 
-    function time(){
-        return navigate('/selecao_time');
-    }
-
     return(
         <SectionBr>
             <div className='home-buttons'>
-                <ButtonBr onClick={time}>
-                        <GiSoccerField size={40}/>
-                        Seu time
-                </ButtonBr>
                 <ButtonBr onClick={selecao}>
                         <FaThList size={30}/>
                         Sua convocação
