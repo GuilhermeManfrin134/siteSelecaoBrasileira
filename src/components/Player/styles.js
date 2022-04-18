@@ -10,29 +10,36 @@ export const PlayerBr = styled.div`
     align-items: center;
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid var(--greenColor);
-    box-shadow: 1px 1px 1px var(--greenColor);
+    border: 4px solid var(--greenColor);
+    box-shadow: 3px 3px 5px var(--greenColor);
     margin: 5px 5px 20px 5px;
     cursor: pointer;
 
     transition: all 0.1s;
     -webkit-transition: all 0.1;
     -moz-transition: all 0.1s;
-
-    :active{
+    
+    :hover{
         transform: scale(0.9);
         -webkit-transform: scale(0.9);
         -moz-transform: scale(0.9);
+    }
+
+    :active{
+        transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
     }
 `;
 
 export const IconBr = styled.div`
     width: 95%;
     height: 130px;
-    border: 2px solid var(--greenColor);
+    border: 4px solid var(--greenColor);
     background-color: var(--whiteColor);
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     overflow: hidden;
+    border-radius: 50%;
 
     img{
         width: 100%;
@@ -46,7 +53,7 @@ export const TextPlayerBr = styled.div`
     text-align: center;
     height: 20px;
     padding: 0 0 2px 0;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: ${props => `${props.bold}`};
     color: ${props => `${props.color}`};
 `;
