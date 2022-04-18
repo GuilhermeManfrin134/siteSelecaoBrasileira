@@ -40,13 +40,6 @@ export const ButtonBr = styled.button`
         width: 150px;
         font-size: 10px;
     }
-    @media screen and (max-width: 400px){
-        width: 80px;
-
-        svg{
-            display: none;
-        }
-    }
 
     transition: ease-in-out .1s;
     -webkit-transition: ease-in-out .1s;

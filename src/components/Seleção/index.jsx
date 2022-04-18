@@ -10,6 +10,7 @@ import { PlayersArea, PlayerPositionTitle,
         PlayerImg, PlayersPosition
 } from '../../components/Posições/styles';
 import { ButtonBr } from "../../pages/Home/styles";
+import { Alert, ButtonBrDisabled } from "./styles";
 
 //Importando Icons
 import { ImInfo } from 'react-icons/im';
@@ -24,7 +25,8 @@ export default function Seleção(){
     const { larguraTela, goleirosConvocados, defensoresConvocados, meiasConvocados, atacantesConvocados } = useContext(UserContext);
     let navigate = useNavigate();
     const [playerModal, setPlayerModal] = useState('');
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(false);
+    const [alert, setAlert] = useState(false);
 
     function info(){
         setModal(true)
@@ -198,11 +200,26 @@ export default function Seleção(){
                 }
             </PlayersPosition>
             {
-                goleirosConvocados && defensoresConvocados && meiasConvocados && atacantesConvocados ?
+                goleirosConvocados.length <= 2 || defensoresConvocados.length <= 7 || meiasConvocados.length <= 6 || atacantesConvocados.length <= 7 ?
+                <>
+                    <ButtonBrDisabled onClick={() => setAlert(!alert)}>
+                            <GiSoccerField size={40}/>
+                            Time Titular
+                    </ButtonBrDisabled>
+                    {
+                        alert ? 
+                        <Alert>
+                            Convoque todos os 26 jogadores para poder escalar o time titular.
+                        </Alert>
+                        :
+                        ''
+                    }
+                </>
+                : 
                 <ButtonBr onClick={time}>
                         <GiSoccerField size={40}/>
                         Time Titular
-                </ButtonBr> : ''
+                </ButtonBr>
             }
         </PlayersArea>
     )
