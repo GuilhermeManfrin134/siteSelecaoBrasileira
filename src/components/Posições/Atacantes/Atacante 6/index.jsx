@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -26,17 +26,25 @@ export default function Atacante6(){
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
 
-    useEffect(() => {
-        const a6Storage = localStorage.getItem('atacante6');
+    const componentMounted = useRef(true);
     
-        if(a6Storage){
-            setAtacante6(JSON.parse(a6Storage));
+    useEffect(async () => {
+        if(componentMounted.current){
+            const a6Storage = localStorage.getItem('atacante6');
+        
+            if(a6Storage){
+                setAtacante6(JSON.parse(a6Storage));
+            }
+            if(a6Storage.length === 2){
+                setSelect(false);
+            }else{
+                setSelect(true);
+            }
         }
-        if(a6Storage.length === 2){
-            setSelect(false);
-        }else{
-            setSelect(true);
+        return () => {
+            componentMounted.current = false;
         }
+
       }, [setAtacante6]);
     
       useEffect(() => {

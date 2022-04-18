@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -26,17 +26,25 @@ export default function Atacante1(){
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
 
-    useEffect(() => {
-        const a1Storage = localStorage.getItem('atacante1');
+    const componentMounted = useRef(true);
     
-        if(a1Storage){
-            setAtacante1(JSON.parse(a1Storage));
+    useEffect(async () => {
+        if(componentMounted.current){
+            const a1Storage = localStorage.getItem('atacante1');
+        
+            if(a1Storage){
+                setAtacante1(JSON.parse(a1Storage));
+            }
+            if(a1Storage.length === 2){
+                setSelect(false);
+            }else{
+                setSelect(true);
+            }
         }
-        if(a1Storage.length === 2){
-            setSelect(false);
-        }else{
-            setSelect(true);
+        return () => {
+            componentMounted.current = false;
         }
+
       }, [setAtacante1]);
     
       useEffect(() => {
@@ -75,6 +83,13 @@ export default function Atacante1(){
         let textAta = document.querySelector('input[name=atacante]:checked').value;
         setTextAta(textAta);
     }
+
+    useEffect(()=>{
+
+
+
+    }, []);
+
 
     function verificar(e){
 
@@ -122,6 +137,7 @@ export default function Atacante1(){
         }
 
     }
+
 
     const [modal, setModal] = useState(false)
 

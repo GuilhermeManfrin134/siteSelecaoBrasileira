@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useRef } from "react";
 
 //Importação de APIs
 import api from "../services/api";
@@ -236,27 +236,43 @@ function UserProvider({children}){
       localStorage.setItem('atacantesConvocados', JSON.stringify(atacantesConvocados));
     }, [atacantesConvocados]);
 
+    
+
     //REQUISIÇÃO APIS
-    useEffect(() => {
-
-        async function loadPlayer(){
-            const response = await api.get('');
-
-            setPlayer(response.data);
-            setLoading(false)
-        }
-        loadPlayer();
-
-    }, [setPlayer]);
+    const componentMounted = useRef(true);
 
     useEffect(() => {
 
-        async function loadData(){
-            const response = await api_br.get('')
-            
-            setCBF(response.data);
+        if(componentMounted.current){
+            async function loadPlayer(){
+                const response = await api.get('');
+    
+                setPlayer(response.data);
+                setLoading(false)
+            }
+            loadPlayer();
         }
-        loadData();
+        return () => {
+            componentMounted.current = false;
+        }
+
+    }, []);
+
+    const compMounted = useRef(true);
+
+    useEffect(() => {
+
+        if(compMounted.current){
+            async function loadData(){
+                const response = await api_br.get('')
+                
+                setCBF(response.data);
+            }
+            loadData();
+        }
+        return () => {
+            compMounted.current = false;
+        }
 
     }, []);
 

@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -26,17 +26,25 @@ export default function Meia2(){
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
 
-    useEffect(() => {
-        const m2Storage = localStorage.getItem('meia2');
+    const componentMounted = useRef(true);
     
-        if(m2Storage){
-            setMeia2(JSON.parse(m2Storage));
+    useEffect(async () => {
+        if(componentMounted.current){
+            const m2Storage = localStorage.getItem('meia2');
+        
+            if(m2Storage){
+                setMeia2(JSON.parse(m2Storage));
+            }
+            if(m2Storage.length === 2){
+                setSelect(false);
+            }else{
+                setSelect(true);
+            }
+        }    
+        return () => {
+            componentMounted.current = false;
         }
-        if(m2Storage.length === 2){
-            setSelect(false);
-        }else{
-            setSelect(true);
-        }
+
       }, [setMeia2]);
     
       useEffect(() => {

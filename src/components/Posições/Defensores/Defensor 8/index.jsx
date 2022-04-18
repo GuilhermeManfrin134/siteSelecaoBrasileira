@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -26,17 +26,26 @@ export default function Defensor8(){
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
 
-    useEffect(() => {
-        const d8Storage = localStorage.getItem('defensor8');
+    const componentMounted = useRef(true);
     
-        if(d8Storage){
-            setDefensor8(JSON.parse(d8Storage));
+    useEffect(async () => {
+
+        if(componentMounted.current){
+            const d8Storage = localStorage.getItem('defensor8');
+        
+            if(d8Storage){
+                setDefensor8(JSON.parse(d8Storage));
+            }
+            if(d8Storage.length === 2){
+                setSelect(false);
+            }else{
+                setSelect(true);
+            }
         }
-        if(d8Storage.length === 2){
-            setSelect(false);
-        }else{
-            setSelect(true);
+        return () => {
+            componentMounted.current = false;
         }
+
       }, [setDefensor8]);
     
       useEffect(() => {

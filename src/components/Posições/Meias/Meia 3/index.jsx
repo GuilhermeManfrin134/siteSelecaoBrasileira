@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -26,17 +26,25 @@ export default function Meia3(){
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
 
-    useEffect(() => {
-        const m3Storage = localStorage.getItem('meia3');
+    const componentMounted = useRef(true);
     
-        if(m3Storage){
-            setMeia3(JSON.parse(m3Storage));
+    useEffect(async () => {
+        if(componentMounted.current){
+            const m3Storage = localStorage.getItem('meia3');
+        
+            if(m3Storage){
+                setMeia3(JSON.parse(m3Storage));
+            }
+            if(m3Storage.length === 2){
+                setSelect(false);
+            }else{
+                setSelect(true);
+            }
         }
-        if(m3Storage.length === 2){
-            setSelect(false);
-        }else{
-            setSelect(true);
+        return () => {
+            componentMounted.current = false;
         }
+
       }, [setMeia3]);
     
       useEffect(() => {

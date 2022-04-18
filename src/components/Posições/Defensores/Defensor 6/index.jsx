@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -26,23 +26,31 @@ export default function Defensor6(){
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
 
-    useEffect(() => {
-        const d6Storage = localStorage.getItem('defensor6');
-        
-        if(d6Storage){
-            setDefensor6(JSON.parse(d6Storage));
+    const componentMounted = useRef(true);
+    
+    useEffect(async () => {
+
+        if(componentMounted.current){
+            const d6Storage = localStorage.getItem('defensor6');
+            
+            if(d6Storage){
+                setDefensor6(JSON.parse(d6Storage));
+            }
+            if(d6Storage.length === 2){
+                setSelect(false);
+            }else{
+                setSelect(true);
+            }
         }
-        if(d6Storage.length === 2){
-            setSelect(false);
-        }else{
-            setSelect(true);
+        return () => {
+            componentMounted.current = false;
         }
 
-      }, [setDefensor6]);
+    }, [setDefensor6]);
     
-      useEffect(() => {
+    useEffect(() => {
         localStorage.setItem('defensor6', JSON.stringify(defensor6));
-      }, [defensor6]);
+    }, [defensor6]);
 
     const [textDef, setTextDef] = useState('jogador');
 

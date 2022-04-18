@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Importação de Contexts
@@ -26,16 +26,24 @@ export default function Defensor5(){
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
 
-    useEffect(() => {
-        const d5Storage = localStorage.getItem('defensor5');
-        
-        if(d5Storage){
-            setDefensor5(JSON.parse(d5Storage));
+    const componentMounted = useRef(true);
+    
+    useEffect(async () => {
+
+        if(componentMounted.current){
+            const d5Storage = localStorage.getItem('defensor5');
+            
+            if(d5Storage){
+                setDefensor5(JSON.parse(d5Storage));
+            }
+            if(d5Storage.length === 2){
+                setSelect(false);
+            }else{
+                setSelect(true);
+            }
         }
-        if(d5Storage.length === 2){
-            setSelect(false);
-        }else{
-            setSelect(true);
+        return () => {
+            componentMounted.current = false;
         }
 
       }, [setDefensor5]);
