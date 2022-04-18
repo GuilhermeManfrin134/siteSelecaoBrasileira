@@ -107,7 +107,7 @@ export default function Titular1(){
         <PlayersArea>
             <PlayersPosition>
                 <PlayerPositionTitle>
-                    Goleiro Titular
+                    Goleiro
                 </PlayerPositionTitle>
                 {
                     select ?
