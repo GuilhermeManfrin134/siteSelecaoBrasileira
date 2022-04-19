@@ -20,7 +20,9 @@ import {
 export default function Titular4({ posição, title }){
 
     const { 
-        larguraTela, defensoresConvocados, meiasConvocados, atacantesConvocados, titular4, setTitular4, player
+        larguraTela, defensoresConvocados, meiasConvocados, atacantesConvocados, 
+        titular4, setTitular4, player, titular5, titular2, titular3,
+        titular6, titular7, titular8, titular9, titular10, titular11
     } = useContext(UserContext);
     
     const [select, setSelect] = useState(false);
@@ -134,7 +136,21 @@ export default function Titular4({ posição, title }){
         item.nome === `${atacantesConvocados[5].nome[0]}` ||
         item.nome === `${atacantesConvocados[6].nome[0]}` ||
         item.nome === `${atacantesConvocados[7].nome[0]}` 
-    )
+    );
+
+    const defender = def.filter(
+        filtro =>
+        filtro.nome !== `${titular2[0].nome}` &&
+        filtro.nome !== `${titular3[0].nome}` &&
+        filtro.nome !== `${titular4[0].nome}` &&
+        filtro.nome !== `${titular5[0].nome}` &&
+        filtro.nome !== `${titular6[0].nome}` &&
+        filtro.nome !== `${titular7[0].nome}` &&
+        filtro.nome !== `${titular8[0].nome}` &&
+        filtro.nome !== `${titular9[0].nome}` &&
+        filtro.nome !== `${titular10[0].nome}` &&
+        filtro.nome !== `${titular11[0].nome}`
+    );
 
     const [modal, setModal] = useState(false)
 
@@ -195,7 +211,7 @@ export default function Titular4({ posição, title }){
                         </PlayerContainer>
                     ))
                     : 
-                    def.map(gol => (
+                    defender.map(gol => (
                         <PlayerContainer key={gol.id} value={gol.nome}>
                             {
                                 modal && <ModalJogadores idj={playerModal} infoFinish={infoFinish}/> 
