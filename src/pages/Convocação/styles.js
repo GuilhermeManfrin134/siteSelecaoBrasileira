@@ -59,10 +59,12 @@ export const ButtonInit = styled.button`
     font-weight: 1000;
     cursor: pointer;
 
+    @media screen and (max-width: 650px){
+        font-size: 15px;
+    }
 
     @media screen and (max-width: 520px){
         width: 80%;
-        font-size: 15px;
     }
 
     transition: ease-in-out .1s;

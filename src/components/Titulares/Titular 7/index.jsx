@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 //Importando Icons
@@ -26,17 +26,25 @@ export default function Titular7({ posição, title }){
     const [select, setSelect] = useState(false);
     const [playerModal, setPlayerModal] = useState('');
 
-    useEffect(() => {
-        const t7Storage = localStorage.getItem('titular7');
+    const componentMounted = useRef(true);
     
-        if(t7Storage){
-            setTitular7(JSON.parse(t7Storage));
+    useEffect(async () => {
+        if(componentMounted.current){
+            const t7Storage = localStorage.getItem('titular7');
+        
+            if(t7Storage){
+                setTitular7(JSON.parse(t7Storage));
+            }
+            if(t7Storage.length === 2){
+                setSelect(false);
+            }else{
+                setSelect(true);
+            }
         }
-        if(t7Storage.length === 2){
-            setSelect(false);
-        }else{
-            setSelect(true);
+        return () => {
+            componentMounted.current = false;
         }
+
       }, [setTitular7]);
     
       useEffect(() => {
