@@ -7,6 +7,7 @@ import Loading from '../../components/Loading';
 
 //Importação de Componentes de Estilização
 import { SectionBr, ButtonBr, TitleBr, MainBr } from './styles';
+import { DescriptionSite, Psite } from '../Convocação/styles';
 
 //Importando Icons
 import { GiSoccerKick } from 'react-icons/gi';
@@ -31,6 +32,18 @@ export default function Home(){
 
     return(
         <SectionBr>
+            <DescriptionSite>
+                <strong>Seja o técnico da seleção brasileira!</strong>
+                <Psite>
+                    Você já se imaginou como o técnico do Brasil em uma Copa do Mundo? <strong>Agora você pode!!! </strong> 
+                </Psite>
+                <Psite>
+                    A Copa do Qatar em 2022 está chegando, se tivesse o poder de Tite, quem seriam os seus escolhidos?
+                </Psite>
+                <Psite>
+                    
+                </Psite>
+            </DescriptionSite>
             <div className='home-buttons'>
                 <ButtonBr onClick={selecao}>
                         <FaThList size={30}/>

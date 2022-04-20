@@ -135,7 +135,7 @@ export default function Titular2({ posição, title }){
         item.nome === `${atacantesConvocados[5].nome[0]}` ||
         item.nome === `${atacantesConvocados[6].nome[0]}` ||
         item.nome === `${atacantesConvocados[7].nome[0]}` 
-    )
+    );
 
     const defender = def.filter(
         filtro =>

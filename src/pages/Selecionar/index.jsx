@@ -31,8 +31,10 @@ export default function Selecionar(){
         titular7, titular8, titular9, titular10, titular11
     
     } = useContext(UserContext);
+    
 
-    if(!titulares){
+    if(!titulares || !titular1[0] === undefined || !titular2[0] === undefined || !titular3[0] === undefined || !titular4[0] === undefined || !titular5[0] === undefined || !titular6[0] === undefined ||
+        !titular7[0] === undefined || !titular8[0] === undefined || !titular9[0] === undefined || !titular10[0] === undefined || !titular11[0] === undefined){
         return(
             <Erro/>
         )
@@ -44,7 +46,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_4_3_3/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
@@ -200,7 +203,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_3_4_3/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
@@ -356,7 +360,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_3_6_1/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
@@ -512,7 +517,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_4_4_2/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
@@ -668,7 +674,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_4_2_2_2/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
@@ -825,7 +832,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_4_1_4_1/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
@@ -981,7 +989,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_5_2_3/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
@@ -1139,7 +1148,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_5_4_1/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
@@ -1296,7 +1306,8 @@ export default function Selecionar(){
             <GPage>
                 <GTitle>Escolha os Titulares do Time</GTitle>
                 <F_3_5_2/>
-
+                <br />
+                <br />
                 <GTitle>Time Titular</GTitle>
                 <AreaEscalacao>
                     <ListEscalacao>
