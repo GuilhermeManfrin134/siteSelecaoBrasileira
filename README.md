@@ -21,6 +21,9 @@ Desenvolvido com a utilização de HTML, CSS, Styled Components, JavaScript e Re
 <li><a href="#trocar">Troque o Jogador</a></li>
 <li><a href="#titular">Time Titular</a></li>
 
+=======
+<li><a href="#home">Home e Listagem de Players</a></li>
+>>>>>>> 00bd31833058b320d2923da63fb489bc0adf4c4f
 
 <hr>
 
@@ -32,7 +35,8 @@ Desenvolvido com a utilização de HTML, CSS, Styled Components, JavaScript e Re
 
 <hr>
 
-# <div id="home">Home e Listagem de Jogadores</div>
+# <div id="home">Home e Listagem de Players</div>
+>>>>>>> 00bd31833058b320d2923da63fb489bc0adf4c4f
 
 <p>A página inicial possui uma descrição e a listagem de todos os jogadores disponíveis para sua convocação.</p>
 
@@ -105,3 +109,5 @@ Desenvolvido com a utilização de HTML, CSS, Styled Components, JavaScript e Re
 <hr>
 
 🚀 EM DESENVOLVIMENTO - MAIS FUNCIONALIDADES FUTURAMENTE 🚀
+=======
+>>>>>>> 00bd31833058b320d2923da63fb489bc0adf4c4f
