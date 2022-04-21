@@ -100,20 +100,12 @@ function UserProvider({children}){
 
     //ARMAZENAMENTO 
 
-    const componentMountedd = useRef(true);
-
-    useEffect(async () => {
-        if(componentMountedd.current){
-            const cStorage = localStorage.getItem('titulares');
-        
-            if(cStorage){
-              setTitulares(JSON.parse(cStorage));
-            }
+    useEffect(() => {
+        const cStorage = localStorage.getItem('titulares');
+    
+        if(cStorage){
+          setTitulares(JSON.parse(cStorage));
         }
-        return () => {
-            componentMountedd.current = false;
-        }
-
     }, [setTitulares]);
     
     useEffect(() => {
