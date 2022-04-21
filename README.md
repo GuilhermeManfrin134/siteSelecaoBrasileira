@@ -10,6 +10,7 @@ Projeto criado para que seja possível que o usuário selecione os jogadores que
 Desenvolvido com a utilização de HTML, CSS, Styled Components, JavaScript e ReactJS.
 
 <li><a href="#test">Como Testar</a></li>
+<li><a href="#home">Home e Listagem de Players</a></li>
 
 <hr>
 
@@ -18,4 +19,12 @@ Desenvolvido com a utilização de HTML, CSS, Styled Components, JavaScript e Re
 <p>Para testar o código, é necessário instalar em sua máquina as seguintes ferramentas: <a target="_blank" href="https://git-scm.com/downloads">Git, </a> <a target="_blank" href="https://nodejs.org/en/download/">Node.js</a>. Também recomeda-se ter um editor para trabalhar com o código como o <a target="_blank" href="https://code.visualstudio.com/download">VSCode</a>.</p>
 <br>
 <p>Para testar o Aplicativo, acesse o site <a target="_blank" href="https://escalesuaseleca.netlify.app/">https://escalesuaseleca.netlify.app/</a></p>
+
+<hr>
+
+# <div id="home">Home e Listagem de Players</div>
+
+<p>A página inicial possui uma descrição e a listagem de todos os jogadores disponíveis para sua convocação.</p>
+
+<img src="./public/readme/Home e Todos os Players.gif" style="width: 600px">
 
