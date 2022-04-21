@@ -138,18 +138,29 @@ export default function Titular8({ posição, title }){
         item.nome === `${atacantesConvocados[7].nome[0]}` 
     );
 
+    const t2 = titular2.map(filtro => filtro.nome);
+    const t3 = titular3.map(filtro => filtro.nome);
+    const t4 = titular4.map(filtro => filtro.nome);
+    const t5 = titular5.map(filtro => filtro.nome);
+    const t6 = titular6.map(filtro => filtro.nome);
+    const t7 = titular7.map(filtro => filtro.nome);
+    const t8 = titular8.map(filtro => filtro.nome);
+    const t9 = titular9.map(filtro => filtro.nome);
+    const t10 = titular10.map(filtro => filtro.nome);
+    const t11 = titular11.map(filtro => filtro.nome);
+
     const defender = def.filter(
         filtro =>
-        filtro.nome !== `${titular2[0].nome}` &&
-        filtro.nome !== `${titular3[0].nome}` &&
-        filtro.nome !== `${titular4[0].nome}` &&
-        filtro.nome !== `${titular5[0].nome}` &&
-        filtro.nome !== `${titular6[0].nome}` &&
-        filtro.nome !== `${titular7[0].nome}` &&
-        filtro.nome !== `${titular8[0].nome}` &&
-        filtro.nome !== `${titular9[0].nome}` &&
-        filtro.nome !== `${titular10[0].nome}` &&
-        filtro.nome !== `${titular11[0].nome}`
+        filtro.nome !== `${t2[0]}` &&
+        filtro.nome !== `${t3[0]}` &&
+        filtro.nome !== `${t4[0]}` &&
+        filtro.nome !== `${t5[0]}` &&
+        filtro.nome !== `${t6[0]}` &&
+        filtro.nome !== `${t7[0]}` &&
+        filtro.nome !== `${t8[0]}` &&
+        filtro.nome !== `${t9[0]}` &&
+        filtro.nome !== `${t10[0]}` &&
+        filtro.nome !== `${t11[0]}`
     );
 
     const [modal, setModal] = useState(false)
