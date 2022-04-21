@@ -49,7 +49,7 @@ Desenvolvido com a utilização de HTML, CSS, Styled Components, JavaScript e Re
 
 ## <div id="goleiro">Convoque os Goleiros</div>
 
-<img src="./public/readme/Escolha o goleiro.gif" style="width: 600px">
+<img src="./public/readme/Escolha o Goleiro.gif" style="width: 600px">
 
 ## <div id="defensor">Convoque os Defensores</div>
 
