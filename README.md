@@ -49,7 +49,7 @@ Desenvolvido com a utilização de HTML, CSS, Styled Components, JavaScript e Re
 
 ## <div id="goleiro">Convoque os Goleiros</div>
 
-<img src="./public/readme/Escolha o goleiro.gif" style="width: 600px">
+<img src="./public/readme/Escolha o Goleiro.gif" style="width: 600px">
 
 ## <div id="defensor">Convoque os Defensores</div>
 
@@ -67,9 +67,12 @@ Desenvolvido com a utilização de HTML, CSS, Styled Components, JavaScript e Re
 
 # <div id="pg-jog">Página dos Jogadores</div>
 
-<p>É possível analisar os dados dos jogadores antes e após escolhe-los, clicando sobre o botão verde de info à direita.</p>
+<p>É possível analisar os dados dos jogadores antes e após escolhe-los, clicando em seu "card" na página inicial.</p>
 
 <img src="./public/readme/Pagina dos jog 1.gif" style="width: 600px">
+
+<p>Ou em seu botão verde de info à direita das listagens.</p>
+
 <img src="./public/readme/Pagina dos jog 2.gif" style="width: 600px">
 
 <img src="./public/readme/Página Jogadores Mobile.gif" style="width: 250px"> (Versão Mobile)
