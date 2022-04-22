@@ -29,15 +29,15 @@ export default function Footer(){
                 <FooterMid>
                     Contato
                     <FooterItemLine>
-                        <Link to='/'>
+                        <a href="https://www.linkedin.com/in/guilherme-manfrin-pereira-4875a2207/" target='_blank'>
                             <FaLinkedin size={50}/>
-                        </Link>
-                        <Link to='/'>
+                        </a>
+                        <a href="https://www.instagram.com/gui.manfrin_134/" target='_blank'>
                             <FaInstagramSquare size={50}/>
-                        </Link>
-                        <Link to='/'>
+                        </a>
+                        <a href="https://github.com/GuilhermeManfrin134" target='_blank'>
                             <FaGithub size={50}/>
-                        </Link>
+                        </a>
                     </FooterItemLine>
                 </FooterMid>
             </FooterBrUp>
