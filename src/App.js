@@ -5,6 +5,7 @@ import Routes from './routes';
 
 //Importação de Componentes
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 //Importando Context
 import UserProvider from './contexts/user';
@@ -15,6 +16,7 @@ export default function App() {
       <BrowserRouter>
           <Header/>
           <Routes/>
+          <Footer/>
       </BrowserRouter>
     </UserProvider>
   );

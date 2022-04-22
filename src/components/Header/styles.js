@@ -36,7 +36,6 @@ export const HeaderIcon = styled.div`
     align-items: center;
     justify-content: center;
 
-
     a{
         height: 100%;
 

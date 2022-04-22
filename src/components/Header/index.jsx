@@ -10,8 +10,6 @@ import { HeaderBr, HeaderDivision, HeaderIcon, HeaderTitle } from './styles';
 export default function Header(){
 
     const { cbf } = useContext(UserContext);
-    
-    
 
     return(
         <HeaderBr>
