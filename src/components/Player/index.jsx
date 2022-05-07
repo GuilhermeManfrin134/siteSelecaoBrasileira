@@ -7,11 +7,11 @@ import { PlayerBr, IconBr, TextPlayerBr } from './styles';
 export default function Player({ nome, clube, foto }){
     return(
         <PlayerBr>
+            <TextPlayerBr color={`var(--blueColor)`} bold={800}>{nome}</TextPlayerBr>
             <IconBr>
                 <img src={foto ? foto : IconDefault} alt={nome} />
             </IconBr>
-            <TextPlayerBr color={`var(--blueColor)`} bold={800}>{nome}</TextPlayerBr>
-            <TextPlayerBr>{clube}</TextPlayerBr>
+            <TextPlayerBr bold={700}>{clube}</TextPlayerBr>
         </PlayerBr>
     )
 }
