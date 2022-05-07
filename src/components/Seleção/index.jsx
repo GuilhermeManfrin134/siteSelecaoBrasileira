@@ -10,23 +10,25 @@ import { PlayersArea, PlayerPositionTitle,
         PlayerImg, PlayersPosition
 } from '../../components/Posições/styles';
 import { ButtonBr } from "../../pages/Home/styles";
-import { Alert, ButtonBrDisabled } from "./styles";
+import { ButtonBrDisabled, ButtonsArea, ConfirmDelete, DeleteContainer, DeleteTeam } from "./styles";
 
 //Importando Icons
 import { ImInfo } from 'react-icons/im';
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { GiSoccerField } from "react-icons/gi";
+import { IoIosCloseCircle } from "react-icons/io";
 
 //Importação de Componentes
 import ModalJogadores from "../../components/ModalJogadores";
 
 export default function Seleção(){
 
-    const { larguraTela, goleirosConvocados, defensoresConvocados, meiasConvocados, atacantesConvocados } = useContext(UserContext);
+    const { deleteTeam, larguraTela, goleirosConvocados, defensoresConvocados, meiasConvocados, atacantesConvocados } = useContext(UserContext);
     let navigate = useNavigate();
     const [playerModal, setPlayerModal] = useState('');
     const [modal, setModal] = useState(false);
     const [alert, setAlert] = useState(false);
+    const [confirm, setConfirm] = useState(false);
 
     function info(){
         setModal(true)
@@ -42,9 +44,34 @@ export default function Seleção(){
         return navigate('/selecao_time');
     }
 
+    function excluir(){
+        setConfirm(!confirm);
+    }
+
     return(
         <PlayersArea>
             <PlayersPosition>
+                {
+                    confirm ? 
+                    <DeleteContainer>
+                        <ConfirmDelete>
+                            <div className="exit">
+                                <IoIosCloseCircle size={40} color={'red'} onClick={() => setConfirm(!confirm)}/>
+                            </div>
+                            <div className="question">
+                                Tem certeza que deseja <strong>excluir</strong> sua convocação?
+                            </div>
+                            <div className="buttons">
+                                <DeleteTeam onClick={deleteTeam}>
+                                    <FaTrashAlt size={25}/>
+                                    SIM
+                                </DeleteTeam>
+                            </div>
+                        </ConfirmDelete>
+                    </DeleteContainer> 
+                    : 
+                    ''
+                }
                 <PlayerPositionTitle>
                     Goleiros
                     <Link to='/convocacao_goleiros'>
@@ -201,25 +228,42 @@ export default function Seleção(){
             </PlayersPosition>
             {
                 goleirosConvocados.length <= 2 || defensoresConvocados.length <= 7 || meiasConvocados.length <= 6 || atacantesConvocados.length <= 7 ?
-                <>
+                <ButtonsArea>
                     <ButtonBrDisabled onClick={() => setAlert(!alert)}>
                             <GiSoccerField size={40}/>
                             Time Titular
                     </ButtonBrDisabled>
                     {
                         alert ? 
-                        <Alert>
-                            Convoque todos os 26 jogadores para poder escalar o time titular.
-                        </Alert>
+                        <DeleteContainer>
+                            <ConfirmDelete>
+                                <div className="exit">
+                                    <IoIosCloseCircle size={40} color={'red'} onClick={() => setAlert(!alert)}/>
+                                </div>
+                                <div className="question">
+                                    Convoque todos os 26 jogadores para poder escalar o time titular.
+                                </div>
+                            </ConfirmDelete>
+                        </DeleteContainer> 
                         :
                         ''
                     }
-                </>
+                    <DeleteTeam onClick={excluir}>
+                        <FaTrashAlt size={25}/>
+                        Delete seu Time
+                    </DeleteTeam>
+                </ButtonsArea>
                 : 
-                <ButtonBr onClick={time}>
+                <ButtonsArea>
+                    <ButtonBr onClick={time}>
                         <GiSoccerField size={40}/>
                         Time Titular
-                </ButtonBr>
+                    </ButtonBr>
+                    <DeleteTeam onClick={excluir}>
+                        <FaTrashAlt size={25}/>
+                        Delete seu Time
+                    </DeleteTeam>
+                </ButtonsArea>
             }
         </PlayersArea>
     )

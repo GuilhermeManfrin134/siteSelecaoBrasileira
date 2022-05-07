@@ -236,7 +236,52 @@ function UserProvider({children}){
       localStorage.setItem('atacantesConvocados', JSON.stringify(atacantesConvocados));
     }, [atacantesConvocados]);
 
-    
+    function deleteTeam(){
+        localStorage.removeItem('goleirosConvocados');
+        localStorage.removeItem('defensoresConvocados');
+        localStorage.removeItem('meiasConvocados');
+        localStorage.removeItem('atacantesConvocados');
+        localStorage.removeItem('goleiro1');
+        localStorage.removeItem('goleiro2');
+        localStorage.removeItem('goleiro3');
+        localStorage.removeItem('defensor1');
+        localStorage.removeItem('defensor2');
+        localStorage.removeItem('defensor3');
+        localStorage.removeItem('defensor4');
+        localStorage.removeItem('defensor5');
+        localStorage.removeItem('defensor6');
+        localStorage.removeItem('defensor7');
+        localStorage.removeItem('defensor8');
+        localStorage.removeItem('meia1');
+        localStorage.removeItem('meia2');
+        localStorage.removeItem('meia3');
+        localStorage.removeItem('meia4');
+        localStorage.removeItem('meia5');
+        localStorage.removeItem('meia6');
+        localStorage.removeItem('meia7');
+        localStorage.removeItem('atacante1');
+        localStorage.removeItem('atacante2');
+        localStorage.removeItem('atacante3');
+        localStorage.removeItem('atacante4');
+        localStorage.removeItem('atacante5');
+        localStorage.removeItem('atacante6');
+        localStorage.removeItem('atacante7');
+        localStorage.removeItem('atacante8');
+        localStorage.removeItem('titular1');
+        localStorage.removeItem('titular2');
+        localStorage.removeItem('titular3');
+        localStorage.removeItem('titular4');
+        localStorage.removeItem('titular5');
+        localStorage.removeItem('titular6');
+        localStorage.removeItem('titular7');
+        localStorage.removeItem('titular8');
+        localStorage.removeItem('titular9');
+        localStorage.removeItem('titular10');
+        localStorage.removeItem('titular11');
+        localStorage.removeItem('titulares');
+        localStorage.removeItem('convocados');
+        window.location.reload();
+    }
 
     //REQUISIÇÃO APIS
     const componentMounted = useRef(true);
@@ -303,7 +348,8 @@ function UserProvider({children}){
                                         titular5, setTitular5, titular6, setTitular6,
                                         titular7, setTitular7, titular8, setTitular8,
                                         titular9, setTitular9, titular10, setTitular10,
-                                        titular11, setTitular11, titulares
+                                        titular11, setTitular11, titulares,
+                                        deleteTeam
                                     }}>
             {children}
         </UserContext.Provider>

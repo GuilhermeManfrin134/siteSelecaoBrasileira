@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+export const ButtonsArea = styled.div`
+    box-sizing: border-box;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+`;
+
 export const ButtonBrDisabled = styled.button`
     box-sizing: border-box;
     display: flex;
@@ -32,30 +40,86 @@ export const ButtonBrDisabled = styled.button`
     -moz-transition: ease-in-out .1s;
 `;
 
-export const Alert = styled.div`
+export const DeleteTeam = styled.button`
     box-sizing: border-box;
-    width: 200px;
-    height: 100px;
-    padding: 15px;
-    border-radius: 4px;
-    background-color: var(--whiteColor);
-    border: 2px solid var(--greenColor);
-    font-weight: 700;
-    text-align: justify;
-    opacity: 1;
-    position: fixed;
-    top: 70%;
-    left: 15%;
-
-    :active{
-        transition: all 5s;
-        -webkit-transition: all 1s;
-        -moz-transition: all 1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 60px;
+    margin: 15px 0 15px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid var(--blueColor);
+    background-color: #FFF;
+    font-size: 15px;
+    font-weight: 1000;
+    color: var(--blueColor);
+    cursor: pointer;
+    
+    svg{
+        margin-right: 10px;
+    }
+    
+    @media screen and (max-width: 620px){
+        width: 150px;
+        font-size: 10px;
     }
 
-    @media screen and (max-width: 400px){
-        width: 150px;
-        height: 80px;
-        font-size: 10px;
+    transition: ease-in-out .1s;
+    -webkit-transition: ease-in-out .1s;
+    -moz-transition: ease-in-out .1s;
+
+    :active{
+        transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        -moz-transform: scale(0.9);
+    }
+`;
+
+export const DeleteContainer = styled.div`
+    box-sizing: border-box;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 30%;
+    left: 10%;
+    z-index: 1;
+`;
+
+export const ConfirmDelete = styled.div`
+    width: 400px;
+    padding: 20px;
+    border: 3px solid var(--blueColor);
+    background-color: #FFF;
+    border-radius: 10px;
+
+    @media screen and (max-width: 680px){
+        width: 100%;
+    }
+
+    .question{
+        text-align: center;
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 30px;
+
+        @media screen and (max-width: 620px){
+            font-size: 15px;
+        }
+    }
+    .buttons{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .exit{
+        text-align: right;
+        margin-bottom: 30px;
+
+        svg{
+            cursor: pointer;
+        }
     }
 `;
