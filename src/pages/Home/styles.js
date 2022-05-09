@@ -55,7 +55,7 @@ export const ButtonBr = styled.button`
 `;
 
 export const MainBr = styled.main`
-    margin-top: 25px;
+    margin-top: 10px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;

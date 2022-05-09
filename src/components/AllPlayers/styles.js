@@ -13,4 +13,11 @@ export const AllPlayersBr = styled.div`
     a{
         color: #000;
     }
+
+    @media screen and (max-width: 580px){
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background-color: #FFF;
+    }
 `;

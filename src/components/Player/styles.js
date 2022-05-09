@@ -28,6 +28,9 @@ export const PlayerBr = styled.div`
             -moz-transform: scale(0.8);
         }
     }
+    @media screen and (max-width: 580px){
+        width: 130px;
+    }
 `;
 
 export const IconBr = styled.div`
@@ -43,6 +46,10 @@ export const IconBr = styled.div`
     img{
         width: 100%;
     }
+
+    @media screen and (max-width: 580px){
+        height: 100px;
+    }
 `;
 
 export const TextPlayerBr = styled.div`
@@ -55,4 +62,8 @@ export const TextPlayerBr = styled.div`
     font-size: 14px;
     font-weight: ${props => `${props.bold}`};
     color: ${props => `${props.color}`};
+
+    @media screen and (max-width: 580px){
+        font-size: 12px;
+    }
 `;
