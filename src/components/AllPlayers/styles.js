@@ -19,5 +19,6 @@ export const AllPlayersBr = styled.div`
         border: none;
         box-shadow: none;
         background-color: #FFF;
+        justify-content: space-around;
     }
 `;
