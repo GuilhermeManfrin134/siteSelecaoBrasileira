@@ -10,14 +10,16 @@ import Player from "../Player";
 //Importando Componentes de Estilização
 import { AllPlayersBr } from './styles'; 
 
-export default function AllPlayers(){
+export default function AllPlayers({search}){
 
-    const { player } = useContext(UserContext); 
+    const { player } = useContext(UserContext);
+    
+    const playerFilter = player.filter(filtro => filtro.nome.toLowerCase().includes(search.toLowerCase()));
 
     return(
         <AllPlayersBr>
             {
-                player.map((player) => (
+                playerFilter.map((player) => (
                     <Link to={`/jogadores/${player.id}`} key={player.id}>
                         <Player
                             nome={player.nome}

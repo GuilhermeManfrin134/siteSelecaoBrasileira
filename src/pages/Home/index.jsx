@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 //Importação de Componentes
@@ -6,18 +6,19 @@ import AllPlayers from '../../components/AllPlayers';
 import Loading from '../../components/Loading';
 
 //Importação de Componentes de Estilização
-import { SectionBr, ButtonBr, TitleBr, MainBr } from './styles';
+import { SectionBr, ButtonBr, TitleBr, MainBr, Filters } from './styles';
 import { DescriptionSite, Psite } from '../Convocação/styles';
 
 //Importando Icons
 import { GiSoccerKick } from 'react-icons/gi';
-import { FaThList } from 'react-icons/fa';
+import { FaSearch, FaThList } from 'react-icons/fa';
 
 //Imprtando Contexts
 import { UserContext } from '../../contexts/user';
 
 export default function Home(){
     
+    const [search, setSearch] = useState('');
     const { loading } = useContext(UserContext);
 
     let navigate = useNavigate();
@@ -58,8 +59,19 @@ export default function Home(){
                 OPÇÕES DE ESCOLHA:
             </TitleBr>
             <MainBr>
+                <Filters>
+                    <div className='icon-search'>
+                        <FaSearch/>
+                    </div>
+                    <input 
+                        type='text'
+                        placeholder='Ex: Neymar'
+                        className='search' 
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </Filters>
                 {
-                    loading ? <Loading/> : <AllPlayers/> 
+                    loading ? <Loading/> : <AllPlayers search={search}/> 
                 }
             </MainBr>
             <ButtonBr onClick={start}>

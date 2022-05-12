@@ -9,6 +9,7 @@ export const AllPlayersBr = styled.div`
     border-radius: 10px;
     border: 2px solid var(--greenColor);
     box-shadow: 1px 1px 5px var(--greenColor);
+    padding-bottom: 20px;
 
     a{
         color: #000;

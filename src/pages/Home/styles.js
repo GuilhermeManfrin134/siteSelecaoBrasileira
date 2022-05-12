@@ -63,6 +63,63 @@ export const MainBr = styled.main`
     align-items: center;
 `;
 
+export const Filters = styled.div`
+    width: 95%;
+    height: 40px;
+    margin-bottom: 15px;
+    display: flex;
+    
+    .icon-search{
+        width: 5%;
+        height: 40px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        
+        svg{
+            font-size: 40px;
+            color: var(--greenColor);
+        }
+
+        @media screen and (max-width: 1260px){
+            width: 10%;
+        }
+        @media screen and (max-width: 580px){
+            svg{
+                font-size: 25px;
+            }
+        }
+        @media screen and (max-width: 400px){
+            display: none;
+        }
+    }
+    
+    .search{
+        box-sizing: border-box;
+        width: 95%;
+        height: 40px;
+        border-bottom: 3px solid var(--greenColor);
+        border-top: none;
+        border-right: none;
+        border-left: none;
+
+        font-size: 20px;
+        padding: 5px;
+
+        :focus{
+            outline: none;
+        }
+
+        @media screen and (max-width: 1260px){
+            width: 90%;
+        }
+        @media screen and (max-width: 400px){
+            width: 95%;
+            margin: auto;
+        }
+    }
+`;
+
 export const TitleBr = styled.h1`
     text-align: center;
 `;
