@@ -14,12 +14,15 @@ export default function AllPlayers({search}){
 
     const { player } = useContext(UserContext);
     
-    const playerFilter = player.filter(filtro => filtro.nome.toLowerCase().includes(search.toLowerCase()));
+    const playerFilterName = player.filter(
+        filtro => 
+        filtro.nome_completo.toLowerCase().includes(search.toLowerCase())
+    );
 
     return(
         <AllPlayersBr>
             {
-                playerFilter.map((player) => (
+                playerFilterName.map((player) => (
                     <Link to={`/jogadores/${player.id}`} key={player.id}>
                         <Player
                             nome={player.nome}

@@ -6,7 +6,7 @@ import AllPlayers from '../../components/AllPlayers';
 import Loading from '../../components/Loading';
 
 //Importação de Componentes de Estilização
-import { SectionBr, ButtonBr, TitleBr, MainBr, Filters } from './styles';
+import { SectionBr, ButtonBr, TitleBr, MainBr, FilterName } from './styles';
 import { DescriptionSite, Psite } from '../Convocação/styles';
 
 //Importando Icons
@@ -59,7 +59,7 @@ export default function Home(){
                 OPÇÕES DE ESCOLHA:
             </TitleBr>
             <MainBr>
-                <Filters>
+                <FilterName>
                     <div className='icon-search'>
                         <FaSearch/>
                     </div>
@@ -69,9 +69,9 @@ export default function Home(){
                         className='search' 
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                </Filters>
+                </FilterName>
                 {
-                    loading ? <Loading/> : <AllPlayers search={search}/> 
+                    loading ? <Loading/> : <AllPlayers search={search} /> 
                 }
             </MainBr>
             <ButtonBr onClick={start}>

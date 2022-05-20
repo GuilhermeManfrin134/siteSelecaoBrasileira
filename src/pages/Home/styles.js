@@ -63,7 +63,7 @@ export const MainBr = styled.main`
     align-items: center;
 `;
 
-export const Filters = styled.div`
+export const FilterName = styled.div`
     width: 95%;
     height: 40px;
     margin-bottom: 15px;
@@ -119,6 +119,7 @@ export const Filters = styled.div`
         }
     }
 `;
+
 
 export const TitleBr = styled.h1`
     text-align: center;
