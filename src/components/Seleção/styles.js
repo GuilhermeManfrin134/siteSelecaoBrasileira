@@ -123,3 +123,49 @@ export const ConfirmDelete = styled.div`
         }
     }
 `;
+
+export const ImagemJog = styled.div`
+    width: 700px;
+    background: var(--yellowColor);
+    padding: 10px;
+    padding-left: 20px;
+    border: 3px solid var(--blueColor);
+
+    
+
+    h2{
+        color: var(--blueColor);
+        text-align: center;
+        font-weight: 900;
+    }
+    h3{
+        color: var(--greenColor);
+
+        strong{
+            color: var(--blueColor);
+            font-style: italic;
+        }
+    }
+    h4{
+        color: var(--greenColor);
+        text-align: end;
+
+        strong{
+            color: var(--blueColor);
+            font-style: italic;
+        }
+    }
+    .imgmargin{
+        margin-right: 20px;
+
+        h5{
+            margin-top: 10px;
+        }
+    }
+`;
+
+export const ImagemFoto = styled.div`
+    display: flex;
+    text-align: center;
+    
+`;

@@ -10,16 +10,19 @@ import { PlayersArea, PlayerPositionTitle,
         PlayerImg, PlayersPosition
 } from '../../components/Posições/styles';
 import { ButtonBr } from "../../pages/Home/styles";
-import { ButtonBrDisabled, ButtonsArea, ConfirmDelete, DeleteContainer, DeleteTeam } from "./styles";
+import { ButtonBrDisabled, ButtonsArea, ConfirmDelete, DeleteContainer, DeleteTeam, ImagemFoto, ImagemJog } from "./styles";
 
 //Importando Icons
 import { ImInfo } from 'react-icons/im';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import { GiSoccerField } from "react-icons/gi";
 import { IoIosCloseCircle } from "react-icons/io";
+import { MdDownload } from "react-icons/md";
 
 //Importação de Componentes
 import ModalJogadores from "../../components/ModalJogadores";
+
+import domtoimage from 'dom-to-image';
 
 export default function Seleção(){
 
@@ -29,6 +32,7 @@ export default function Seleção(){
     const [modal, setModal] = useState(false);
     const [alert, setAlert] = useState(false);
     const [confirm, setConfirm] = useState(false);
+    const [exibe, setExibe] = useState(false);
 
     function info(){
         setModal(true)
@@ -46,6 +50,21 @@ export default function Seleção(){
 
     function excluir(){
         setConfirm(!confirm);
+    }
+
+    function exibir(){
+        setExibe(!exibe);
+
+    }
+
+    function salvarImg(){
+        domtoimage.toJpeg(document.getElementById('my-node'), { quality: 0.95 })
+        .then(function (dataUrl) {
+            let link = document.createElement('a');
+            link.download = 'my-image-name.jpeg';
+            link.href = dataUrl;
+            link.click();
+        });
     }
 
     return(
@@ -259,12 +278,88 @@ export default function Seleção(){
                         <GiSoccerField size={40}/>
                         Time Titular
                     </ButtonBr>
+                    <DeleteTeam onClick={exibir}>
+                        <MdDownload size={25}/>
+                        Baixar Time
+                    </DeleteTeam>
                     <DeleteTeam onClick={excluir}>
                         <FaTrashAlt size={25}/>
                         Delete seu Time
                     </DeleteTeam>
                 </ButtonsArea>
             }
+
+            {
+                exibe ?
+                <>
+                <ImagemJog id="my-node">
+                    <h2>Minha Convocação</h2>
+
+                    <h3>Goleiros</h3>
+                    <ImagemFoto>
+                        {
+                            goleirosConvocados.map(gol => (
+                                <div key={gol.id} className="imgmargin">
+                                        <PlayerImg>
+                                            <img src={gol.foto} alt={gol.nome}/>
+                                        </PlayerImg>
+                                        <h5>{gol.nome}</h5>
+                                </div>
+                            ))
+                        }
+                    </ImagemFoto>
+                    <h3>Defensores</h3>
+                    <ImagemFoto>
+                        {
+                            defensoresConvocados.map(gol => (
+                                <div key={gol.id} className="imgmargin">
+                                        <PlayerImg>
+                                            <img src={gol.foto} alt={gol.nome}/>
+                                        </PlayerImg>
+                                        <h5>{gol.nome}</h5>
+                                </div>
+                            ))
+                        }
+                    </ImagemFoto>
+                    <h3>Meios de Campo</h3>
+                    <ImagemFoto>
+                        {
+                            meiasConvocados.map(gol => (
+                                <div key={gol.id} className="imgmargin">
+                                        <PlayerImg>
+                                            <img src={gol.foto} alt={gol.nome}/>
+                                        </PlayerImg>
+                                        <h5>{gol.nome}</h5>
+                                </div>
+                            ))
+                        }
+                    </ImagemFoto>
+                    <h3>Atacantes</h3>
+                    <ImagemFoto>
+                        {
+                            atacantesConvocados.map(gol => (
+                                <div key={gol.id} className="imgmargin">
+                                        <PlayerImg>
+                                            <img src={gol.foto} alt={gol.nome}/>
+                                        </PlayerImg>
+                                        <h5>{gol.nome}</h5>
+                                </div>
+                            ))
+                        }
+                    </ImagemFoto>
+
+                    <h4>Escale a sua seleção em: <strong>escalesuaseleca.netlify.app</strong></h4>
+                </ImagemJog>
+                <DeleteTeam onClick={salvarImg}>
+                    <MdDownload size={25}/>
+                    Baixar Imagem
+                </DeleteTeam>
+                </>
+                :
+                ''
+            }
+
+            
         </PlayersArea>
     )
 }
