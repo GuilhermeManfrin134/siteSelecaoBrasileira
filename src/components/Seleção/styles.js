@@ -131,6 +131,11 @@ export const ImagemJog = styled.div`
     padding-left: 20px;
     border: 3px solid var(--blueColor);
 
+    .alinha{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
     
 
     h2{
@@ -155,17 +160,35 @@ export const ImagemJog = styled.div`
             font-style: italic;
         }
     }
+`;
+
+export const ImagemFoto = styled.div`
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
     .imgmargin{
-        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         h5{
             margin-top: 10px;
         }
     }
 `;
-
-export const ImagemFoto = styled.div`
+export const ImagemFotoGol = styled.div`
+    width: 40%;
     display: flex;
     text-align: center;
-    
+    justify-content: space-between;
+    .imgmargin{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h5{
+            margin-top: 10px;
+        }
+    }
 `;

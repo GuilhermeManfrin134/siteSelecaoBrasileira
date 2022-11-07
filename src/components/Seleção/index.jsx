@@ -10,7 +10,10 @@ import { PlayersArea, PlayerPositionTitle,
         PlayerImg, PlayersPosition
 } from '../../components/Posições/styles';
 import { ButtonBr } from "../../pages/Home/styles";
-import { ButtonBrDisabled, ButtonsArea, ConfirmDelete, DeleteContainer, DeleteTeam, ImagemFoto, ImagemJog } from "./styles";
+import { 
+    ButtonBrDisabled, ButtonsArea, ConfirmDelete, DeleteContainer, DeleteTeam, 
+    ImagemFoto, ImagemJog, ImagemFotoGol
+} from "./styles";
 
 //Importando Icons
 import { ImInfo } from 'react-icons/im';
@@ -296,7 +299,9 @@ export default function Seleção(){
                     <h2>Minha Convocação</h2>
 
                     <h3>Goleiros</h3>
-                    <ImagemFoto>
+
+                    <div className="alinha">
+                    <ImagemFotoGol>
                         {
                             goleirosConvocados.map(gol => (
                                 <div key={gol.id} className="imgmargin">
@@ -307,8 +312,11 @@ export default function Seleção(){
                                 </div>
                             ))
                         }
-                    </ImagemFoto>
+                    </ImagemFotoGol>
+                    </div>
+
                     <h3>Defensores</h3>
+                    <div className="alinha">
                     <ImagemFoto>
                         {
                             defensoresConvocados.map(gol => (
@@ -321,7 +329,10 @@ export default function Seleção(){
                             ))
                         }
                     </ImagemFoto>
+                    </div>
+
                     <h3>Meios de Campo</h3>
+                    <div className="alinha">
                     <ImagemFoto>
                         {
                             meiasConvocados.map(gol => (
@@ -334,6 +345,7 @@ export default function Seleção(){
                             ))
                         }
                     </ImagemFoto>
+                    </div>
                     <h3>Atacantes</h3>
                     <ImagemFoto>
                         {
