@@ -39,7 +39,7 @@ export default function Home(){
                     Você já se imaginou como o técnico do Brasil em uma Copa do Mundo? <strong>Agora você pode!!! </strong> 
                 </Psite>
                 <Psite>
-                    A Copa do Qatar em 2022 está chegando, se tivesse o poder de Tite, quem seriam os seus escolhidos?
+                    A Copa do Mundo de 2026 está chegando, se tivesse o poder de Carlo Ancelotti, quem seriam os seus escolhidos?
                 </Psite>
                 <Psite>
                     
